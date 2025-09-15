@@ -4,8 +4,8 @@
 {{-- Hero Section --}}
 <section id="hero" class="d-flex align-items-center text-center text-white position-relative"
     style="height:75vh;
-        background: linear-gradient(135deg, rgba(110,63,68,0.85), rgba(27,27,27,0.85)),
-                    url({{ asset('assets/img/lontong-kupang.jpeg') }}) center/cover no-repeat;">
+        background: linear-gradient(180deg, rgba(56, 56, 56, 0.85), rgba(255, 227, 65, 0.445) ),
+                    url({{ asset('assets/img/benner.jpg') }}) center/cover no-repeat;">
 
     <div class="container">
         <h1 class="display-4 fw-bold animate__animated animate__fadeInDown" 
@@ -25,9 +25,9 @@
         </p>
 
         <a href="#menu" 
-            class="btn btn-lg shadow animate__animated animate__pulse animate__infinite"
-            style="background: linear-gradient(45deg, #6B4226, #A23E48); color:#E6D5B8; border:none; transition: all 0.3s;">
-            🍽 Lihat Menu
+            class="btn btn-lg shadow animate__animated animate__pulse animate__infinite fs-semibold"
+            style="background: linear-gradient(45deg, #7b767273, #7b767257); color:#efefef; border:none; transition: all 0.3s;">
+            Lihat Menu
         </a>
     </div>
 
@@ -39,15 +39,18 @@
 </section>
 
 {{-- About Section --}}
-<section id="about" class="py-5" style="background-color:#E6D5B8;">
+<section id="about" class="py-5" style="background: linear-gradient(
+        0deg,
+        rgb(124, 106, 1),
+        rgba(0, 0, 0, 0.95));">
     <div class="container">
         <div class="row align-items-center g-5">
             <div class="col-md-6" data-aos="fade-right">
                 <img src="{{ asset('assets/img/resto.jpeg') }}" class="img-fluid rounded-4 shadow-lg" alt="Chef">
             </div>
             <div class="col-md-6 text-center text-md-start" data-aos="fade-left">
-                <h2 class="fw-bold mb-3" style="color:#6B4226;">Tentang Kami</h2>
-                <p class="lead" style="color:#6B4226;">
+                <h2 class="fw-bold mb-3" style="color:#efefef;">Tentang Kami</h2>
+                <p class="lead" style="color:#efefef;">
                     RestoranKami berdiri sejak 2010, menyajikan makanan berkualitas dengan bahan segar.
                     Kami mengutamakan rasa, kebersihan, dan pelayanan ramah agar setiap kunjungan Anda
                     menjadi pengalaman yang menyenangkan.
@@ -58,69 +61,20 @@
     </div>
 </section>
 
-{{-- Menu Section --}}
-<section id="menu" class="py-5" style="background-color:#9c5e41;">
-    <div class="container text-center">
-        <h2 class="fw-bold mb-5" style="color:#fff;" data-aos="zoom-in">Menu Favorit</h2>
-        <div class="row g-4">
-
-            {{-- Menu Item 1 --}}
-            <div class="col-md-4" data-aos="flip-left">
-                <div class="card h-100 border-0 shadow-lg hover-card">
-                    <img src="{{ asset('assets/img/lontong-kupang.jpeg') }}" 
-                        class="card-img-top rounded-top img-fluid object-fit-cover" 
-                        alt="Lontong Kupang" style="height:400px; object-fit:cover;">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold" style="color:#6B4226;">Lontong Kupang</h5>
-                        <p class="card-text text-dark">Lontong khas Kupang dengan bumbu rahasia.</p>
-                        <span class="badge bg-custom">Rp 120.000</span>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Menu Item 2 --}}
-            <div class="col-md-4" data-aos="flip-up">
-                <div class="card h-100 border-0 shadow-lg hover-card">
-                    <img src="{{ asset('assets/img/nasgor.jpeg') }}" 
-                        class="card-img-top rounded-top img-fluid object-fit-cover" 
-                        alt="Nasi Goreng" style="height:400px; object-fit:cover;">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold" style="color:#6B4226;">Nasi Goreng Spesial</h5>
-                        <p class="card-text text-dark">Nasi goreng lezat dengan topping ayam & telur.</p>
-                        <span class="badge bg-custom">Rp 65.000</span>
-                    </div>
-                </div>
-            </div>
-
-            {{-- Menu Item 3 --}}
-            <div class="col-md-4" data-aos="flip-right">
-                <div class="card h-100 border-0 shadow-lg hover-card">
-                    <img src="{{ asset('assets/img/onde.jpeg') }}" 
-                        class="card-img-top rounded-top img-fluid object-fit-cover" 
-                        alt="Onde-onde" style="height:400px; object-fit:cover;">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold" style="color:#6B4226;">Onde-onde</h5>
-                        <p class="card-text text-dark">Camilan tradisional manis dengan wijen renyah.</p>
-                        <span class="badge bg-custom">Rp 25.000</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
 {{-- Info & Contact Section --}}
-<section id="info" class="py-5" style="background-color:#634c4c;">
+<section id="info" class="py-5" style="background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.95),
+        rgb(124, 106, 1));">
     <div class="container text-white">
         <div class="row g-5 align-items-center">
             {{-- Info --}}
             <div class="col-lg-6" data-aos="fade-right">
                 <h2 class="fw-bold mb-4" style="color:#E6D5B8;">📌 Informasi Restoran</h2>
                 <ul class="list-unstyled fs-5">
-                    <li><i class="bi bi-geo-alt-fill text-danger me-2"></i>Jl. Sudirman No. 123, Jakarta</li>
-                    <li><i class="bi bi-telephone-fill text-danger me-2"></i>(021) 123-4567</li>
-                    <li><i class="bi bi-clock-fill text-danger me-2"></i>Buka: 10.00 - 22.00 WIB</li>
+                    <li><i class="bi bi-geo-alt-fill text-custom me-2"></i>Jl. Sudirman No. 123, Jakarta</li>
+                    <li><i class="bi bi-telephone-fill text-custom me-2"></i>(021) 123-4567</li>
+                    <li><i class="bi bi-clock-fill text-custom me-2"></i>Buka: 10.00 - 22.00 WIB</li>
                 </ul>
                 <a href="https://wa.me/628123456789" target="_blank" class="btn btn-custom mt-3"style="color:#E6D5B8;">
                     <i class="bi bi-whatsapp text-white"></i> Reservasi Sekarang
@@ -167,5 +121,7 @@ body {
     transform: translateY(-12px) scale(1.03);
     box-shadow: 0 15px 30px rgba(0,0,0,0.25);
 }
+.text-custom { color: #A23E48 !important; }
+
 .text-beige { color: #E6D5B8; }
 </style>

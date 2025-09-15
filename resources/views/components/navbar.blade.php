@@ -8,8 +8,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/gallery') }}">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url('/menu') }}">Menu</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('/aboutus') }}">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('/contact') }}">Contact</a></li>
+                <li class="nav-item">
+                    <a class="btn ms-3" href="/admin/login" style="color:#efefef; background-color: #ffffff11;">
+                        <i class="bi bi-box-arrow-in-right me-1"></i> Reservasi
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

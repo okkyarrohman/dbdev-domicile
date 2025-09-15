@@ -1,4 +1,5 @@
 import "./bootstrap";
+import "../css/app.css"; // ini cukup
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 

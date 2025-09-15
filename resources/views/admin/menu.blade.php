@@ -6,129 +6,230 @@
     <!-- Header -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold text-dark">🍽️ Manajemen Menu</h2>
-        <a href="#" class="btn btn-primary shadow-sm">
+        <a href="#" class="btn btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#menuModal">
             <i class="bi bi-plus-circle me-2"></i> Tambah Menu
         </a>
     </div>
+    <div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content rounded-4 shadow">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="menuModalLabel">Tambah Menu Baru</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
 
-    <!-- Tabs -->
-    <ul class="nav nav-tabs mb-4" id="menuTabs" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="makanan-tab" data-bs-toggle="tab" data-bs-target="#makanan" type="button" role="tab">
-                🍛 Makanan
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="minuman-tab" data-bs-toggle="tab" data-bs-target="#minuman" type="button" role="tab">
-                🥤 Minuman
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="cemilan-tab" data-bs-toggle="tab" data-bs-target="#cemilan" type="button" role="tab">
-                🍩 Cemilan
-            </button>
-        </li>
-    </ul>
-
-    <!-- Tab Content -->
-    <div class="tab-content" id="menuTabsContent">
-
-        <!-- Tab Makanan -->
-        <div class="tab-pane fade show active" id="makanan" role="tabpanel">
-            <div class="row g-4">
-                @for ($i = 1; $i <= 4; $i++)
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
-                        <div class="position-relative">
-                            <img src="{{ asset('assets/img/lontong-kupang.jpeg') }}" 
-                                 alt="Makanan {{ $i }}" 
-                                 class="card-img-top" 
-                                 style="height:200px; object-fit:cover;">
-                            <span class="badge bg-primary position-absolute top-0 start-0 m-3 rounded-pill px-3 py-2">
-                                Makanan
-                            </span>
+                <form action="{{ route('menu.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        {{-- Nama --}}
+                        <div class="mb-3">
+                            <label class="form-label">Nama Menu</label>
+                            <input type="text" name="nama" class="form-control" placeholder="Contoh: Gudeg Jogja" required>
                         </div>
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="fw-bold text-dark">Makanan {{ $i }}</h5>
-                            <p class="text-muted small flex-grow-1">Deskripsi singkat makanan {{ $i }}.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="fw-bold text-primary fs-5">Rp {{ number_format(20000 * $i, 0, ',', '.') }}</span>
-                                <div>
-                                    <a href="#" class="btn btn-sm btn-warning me-1"><i class="bi bi-pencil-square"></i></a>
-                                    <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
-                                </div>
+
+                        {{-- Deskripsi --}}
+                        <div class="mb-3">
+                            <label class="form-label">Deskripsi</label>
+                            <textarea name="deskripsi" class="form-control" rows="3" placeholder="Deskripsi singkat menu..."></textarea>
+                        </div>
+
+                        {{-- Harga --}}
+                        <div class="mb-3">
+                            <label class="form-label">Harga</label>
+                            <input type="number" name="harga" class="form-control" placeholder="25000" required>
+                        </div>
+
+                        {{-- Favorite --}}
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" name="favorite" class="form-check-input" id="favoriteCheck">
+                            <label class="form-check-label" for="favoriteCheck">Tandai sebagai Favorite</label>
+                        </div>
+
+                        {{-- Gambar --}}
+                        <div class="mb-3">
+                            <label class="form-label">Gambar</label>
+                            <input type="file" name="gambar" id="gambarInput" class="form-control" accept="image/*" onchange="previewImage(event)">
+                            
+                            {{-- Preview --}}
+                            <div id="previewWrapper" class="position-relative mt-3 d-none" style="max-width: 200px;">
+                                <img id="gambarPreview" class="img-fluid rounded shadow-sm" alt="Preview">
+                                <button type="button" id="removeImage" class="btn btn-sm btn-danger position-absolute top-0 end-0 m-1">&times;</button>
                             </div>
                         </div>
                     </div>
-                </div>
-                @endfor
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan Menu</button>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
 
-        <!-- Tab Minuman -->
-        <div class="tab-pane fade" id="minuman" role="tabpanel">
-            <div class="row g-4">
-                @for ($i = 1; $i <= 4; $i++)
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
-                        <div class="position-relative">
-                            <img src="{{ asset('assets/img/nasgor.jpeg') }}" 
-                                 alt="Minuman {{ $i }}" 
-                                 class="card-img-top" 
-                                 style="height:200px; object-fit:cover;">
-                            <span class="badge bg-success position-absolute top-0 start-0 m-3 rounded-pill px-3 py-2">
-                                Minuman
-                            </span>
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="fw-bold text-dark">Minuman {{ $i }}</h5>
-                            <p class="text-muted small flex-grow-1">Deskripsi singkat minuman {{ $i }}.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="fw-bold text-primary fs-5">Rp {{ number_format(10000 * $i, 0, ',', '.') }}</span>
-                                <div>
-                                    <a href="#" class="btn btn-sm btn-warning me-1"><i class="bi bi-pencil-square"></i></a>
-                                    <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
-                                </div>
-                            </div>
+    <!-- Search -->
+    <form method="GET" action="{{ route('admin.menu') }}" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="search" value="{{ $search }}" class="form-control"
+                   placeholder="Cari menu...">
+            <button class="btn btn-outline-secondary" type="submit">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </form>
+
+<!-- Menu List -->
+<div class="row g-4">
+    @forelse($menus as $menu)
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+                <div class="position-relative">
+                    <img src="{{ $menu->gambar ? asset('storage/'.$menu->gambar) : asset('assets/img/no-image.png') }}" 
+                         alt="{{ $menu->nama }}" 
+                         class="card-img-top"
+                         style="height:200px; object-fit:cover;">
+                    @if($menu->favorite)
+                        <span class="badge bg-danger position-absolute top-0 start-0 m-3 rounded-pill px-3 py-2">
+                            Favorite
+                        </span>
+                    @endif
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="fw-bold text-dark">{{ $menu->nama }}</h5>
+                    <p class="text-muted small flex-grow-1">{{ $menu->deskripsi }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold text-primary fs-5">
+                            Rp {{ number_format($menu->harga, 0, ',', '.') }}
+                        </span>
+                        <div>
+                            <!-- Tombol Edit -->
+                            <button class="btn btn-sm btn-warning me-1" data-bs-toggle="modal" data-bs-target="#editMenuModal{{ $menu->id }}">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+
+                            <!-- Tombol Hapus -->
+                            <form id="delete-form-{{ $menu->id }}" 
+                                action="{{ route('menu.destroy', $menu->id) }}" 
+                                method="POST" 
+                                style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $menu->id }})">
+                                    Hapus
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
-                @endfor
             </div>
         </div>
 
-        <!-- Tab Cemilan -->
-        <div class="tab-pane fade" id="cemilan" role="tabpanel">
-            <div class="row g-4">
-                @for ($i = 1; $i <= 4; $i++)
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
-                        <div class="position-relative">
-                            <img src="{{ asset('assets/img/onde.jpeg') }}" 
-                                 alt="Cemilan {{ $i }}" 
-                                 class="card-img-top" 
-                                 style="height:200px; object-fit:cover;">
-                            <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-3 rounded-pill px-3 py-2">
-                                Cemilan
-                            </span>
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="fw-bold text-dark">Cemilan {{ $i }}</h5>
-                            <p class="text-muted small flex-grow-1">Deskripsi singkat cemilan {{ $i }}.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="fw-bold text-primary fs-5">Rp {{ number_format(8000 * $i, 0, ',', '.') }}</span>
-                                <div>
-                                    <a href="#" class="btn btn-sm btn-warning me-1"><i class="bi bi-pencil-square"></i></a>
-                                    <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
-                                </div>
+        <!-- Modal Edit -->
+        <div class="modal fade" id="editMenuModal{{ $menu->id }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content rounded-4 shadow">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold">Edit Menu - {{ $menu->nama }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <form action="{{ route('menu.update', $menu->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
+                            {{-- Upload Gambar --}}
+                            <div class="mb-3">
+                                <label class="form-label">Gambar Menu</label>
+                                <input type="file" name="gambar" class="form-control">
+                                @if($menu->gambar)
+                                    <img src="{{ asset('storage/'.$menu->gambar) }}" class="mt-2 rounded" width="120">
+                                @endif
+                            </div>
+
+                            {{-- Nama --}}
+                            <div class="mb-3">
+                                <label class="form-label">Nama Menu</label>
+                                <input type="text" name="nama" class="form-control" value="{{ $menu->nama }}" required>
+                            </div>
+
+                            {{-- Deskripsi --}}
+                            <div class="mb-3">
+                                <label class="form-label">Deskripsi</label>
+                                <textarea name="deskripsi" class="form-control" rows="3">{{ $menu->deskripsi }}</textarea>
+                            </div>
+
+                            {{-- Harga --}}
+                            <div class="mb-3">
+                                <label class="form-label">Harga</label>
+                                <input type="number" name="harga" class="form-control" value="{{ $menu->harga }}" required>
+                            </div>
+
+                            {{-- Favorite --}}
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" name="favorite" class="form-check-input" id="favoriteCheck{{ $menu->id }}"
+                                    {{ $menu->favorite ? 'checked' : '' }}>
+                                <label class="form-check-label" for="favoriteCheck{{ $menu->id }}">Tandai sebagai Favorite</label>
                             </div>
                         </div>
-                    </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                        </div>
+                    </form>
                 </div>
-                @endfor
             </div>
         </div>
 
+    @empty
+        <p class="text-muted">Tidak ada menu ditemukan.</p>
+    @endforelse
+</div>
+
+
+    <!-- Pagination -->
+    <div class="mt-4">
+        {{ $menus->withQueryString()->links() }}
     </div>
 </div>
+<script>
+function confirmDelete(id) {
+    Swal.fire({
+        title: 'Yakin hapus menu ini?',
+        text: "Data yang dihapus tidak bisa dikembalikan!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Ya, hapus!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.getElementById('delete-form-' + id).submit();
+        }
+    })
+}
+
+function previewImage(event) {
+    let input = event.target;
+    let previewWrapper = document.getElementById('previewWrapper');
+    let preview = document.getElementById('gambarPreview');
+    let removeBtn = document.getElementById('removeImage');
+
+    if (input.files && input.files[0]) {
+        let reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            previewWrapper.classList.remove('d-none');
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+
+    removeBtn.onclick = function() {
+        input.value = "";
+        previewWrapper.classList.add('d-none');
+        preview.src = "";
+    }
+}
+</script>
 @endsection

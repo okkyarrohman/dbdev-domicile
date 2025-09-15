@@ -4,8 +4,8 @@
 {{-- Hero Section --}}
 <section class="d-flex align-items-center text-white text-center position-relative"
     style="height:50vh;
-        background: linear-gradient(135deg, rgba(107,66,38,0.8), rgba(210,180,140,0.85)),
-                    url('{{ asset('assets/img/contact-hero.jpeg') }}') center/cover no-repeat;">
+        background: linear-gradient(180deg, rgba(56, 56, 56, 0.85), rgba(255, 227, 65, 0.445) ),
+                    url('{{ asset('assets/img/8.jpg') }}') center/cover no-repeat;">
     <div class="container">
         <h1 class="display-4 fw-bold mb-3 animate__animated animate__fadeInDown">Hubungi Kami</h1>
         <p class="lead animate__animated animate__fadeInUp" style="max-width: 700px; margin:0 auto;">
@@ -15,28 +15,31 @@
 </section>
 
 {{-- Contact Info --}}
-<section class="py-5 bg-cream">
+<section class="py-5" style="background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.95),
+        rgb(124, 106, 1));">
     <div class="container">
         <div class="row g-4 text-center">
             <div class="col-md-4" data-aos="fade-up">
-                <div class="p-4 rounded-4 shadow-lg bg-white h-100">
+                <div class="p-4 rounded-4 shadow-lg h-100" style="background:rgba(255,255,255,0.1); color:#efefef">
                     <i class="bi bi-geo-alt fs-1 tone-brown mb-3"></i>
                     <h5 class="fw-bold mb-2">Alamat</h5>
-                    <p class="text-muted">Jl. Malioboro No. 123, Yogyakarta</p>
+                    <p class="">Jl. Malioboro No. 123, Yogyakarta</p>
                 </div>
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="p-4 rounded-4 shadow-lg bg-white h-100">
+                <div class="p-4 rounded-4 shadow-lg h-100" style="background:rgba(255,255,255,0.1); color:#efefef">
                     <i class="bi bi-telephone fs-1 tone-brown mb-3"></i>
                     <h5 class="fw-bold mb-2">Telepon</h5>
-                    <p class="text-muted">+62 812-3456-7890</p>
+                    <p class="">+62 812-3456-7890</p>
                 </div>
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="p-4 rounded-4 shadow-lg bg-white h-100">
+                <div class="p-4 rounded-4 shadow-lg h-100" style="background:rgba(255,255,255,0.1); color:#efefef">
                     <i class="bi bi-envelope fs-1 tone-brown mb-3"></i>
                     <h5 class="fw-bold mb-2">Email</h5>
-                    <p class="text-muted">info@restorankami.com</p>
+                    <p class="">info@restorankami.com</p>
                 </div>
             </div>
         </div>
@@ -44,12 +47,15 @@
 </section>
 
 {{-- Contact Form --}}
-<section class="py-5 bg-light">
+<section class="py-5 "style="background: linear-gradient(
+        0deg,
+        rgb(124, 106, 1),
+        rgba(0, 0, 0, 0.95));">>
     <div class="container">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6" data-aos="fade-right">
-                <h2 class="fw-bold mb-4 tone-brown">Kirim Pesan</h2>
-                <form action="#" method="POST" class="p-4 bg-cream rounded-4 shadow-lg">
+                <h2 class="fw-bold mb-4 text-white">Kirim Pesan</h2>
+                <form action="#" method="POST" class="p-4 rounded-4 shadow-lg" style="background:rgba(255,255,255,0.1); color:#efefef">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Nama</label>
@@ -76,17 +82,6 @@
     </div>
 </section>
 
-{{-- CTA --}}
-<section class="py-5 text-center text-white" style="background:linear-gradient(135deg,#6B4226,#D2B48C);">
-    <div class="container">
-        <h2 class="fw-bold mb-3">Reservasi Sekarang</h2>
-        <p class="fs-5 mb-4">Hubungi kami untuk booking meja atau acara spesial Anda.</p>
-        <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-light btn-lg shadow">
-            📲 Pesan via WhatsApp
-        </a>
-    </div>
-</section>
-
 <style>
 /* 2 Tone Color */
 .bg-cream { background: #fdf6ec !important; }
@@ -94,7 +89,7 @@
 
 /* Button Premium */
 .btn-custom {
-    background: linear-gradient(45deg, #6B4226, #D2B48C); /* brown ke beige */
+    background: linear-gradient(45deg, #6b422600, #d2b48c00); /* brown ke beige */
     color: #fff;
     font-weight: 600;
     border: none;
@@ -103,7 +98,7 @@
 }
 .btn-custom:hover {
     transform: translateY(-3px);
-    background: linear-gradient(45deg, #8B5E3C, #caa874);
+    background: linear-gradient(45deg, #00000054, #00000054);
     color: #fff;
     box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
@@ -119,7 +114,7 @@
 
 /* Section Title */
 h2.fw-bold {
-    color: #6B4226 !important;
+    color: #efefef !important;
     border-left: 5px solid #D2B48C;
     padding-left: 10px;
 }
