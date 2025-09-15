@@ -1,4 +1,4 @@
-name: Deploy Skripsi Nia
+name: Deploy Production
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -p 64000 36.50.77.25 >> ~/.ssh/known_hosts
 
-      - name: Deploy ke Skripsi Nia
+      - name: Deploy Domicile Main
         run: |
           ssh -i ~/.ssh/id_ed25519 -p 64000 okkyproj@36.50.77.25 << 'EOF'
             cd laravel/dbdev-domicile
