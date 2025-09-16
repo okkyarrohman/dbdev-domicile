@@ -55,15 +55,15 @@
         <div class="row g-5 align-items-center">
             <div class="col-lg-6" data-aos="fade-right">
                 <h2 class="fw-bold mb-4 text-white">Kirim Pesan</h2>
-                <form action="#" method="POST" class="p-4 rounded-4 shadow-lg" style="background:rgba(255,255,255,0.1); color:#efefef">
+                <form action="{{ route('contact.store') }}" method="POST" class="p-4 rounded-4 shadow-lg" style="background:rgba(255,255,255,0.1); color:#efefef">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Nama</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Nama Anda" required>
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="email@domain.com" required>
+                        <label for="phone" class="form-label">Nomor Telepon</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="08xxxxxxxxxx" required>
                     </div>
                     <div class="mb-3">
                         <label for="message" class="form-label">Pesan</label>

@@ -33,5 +33,6 @@ img {
 @media (min-width: 992px) {
     .main-content-admin {
         padding-left: 240px;
+        height: 100vh;
     }
 }

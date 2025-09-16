@@ -7,93 +7,24 @@
         <h2 class="text-center fw-bold mb-5 tone-brown">Gallery</h2>
 
         <div class="row g-4">
-            {{-- Foto 1 --}}
-            <div class="col-md-4">
-                <div class="gallery-card shadow rounded-4 overflow-hidden">
-                    <img src="{{ asset('assets/img/1.jpg') }}" 
-                         class="img-fluid gallery-img" 
-                         alt="Interior Resto" 
-                         data-bs-toggle="modal" data-bs-target="#galleryModal1">
+            @foreach ($galleries as $gallery)
+                <div class="col-md-4">
+                    <div class="gallery-card shadow rounded-4 overflow-hidden">
+                        <div class="flipper">
+                            {{-- Front of the Card (Image) --}}
+                            <div class="front">
+                                <img src="{{ asset('storage/' . $gallery->image) }}" 
+                                    class="img-fluid gallery-img" 
+                                    alt="{{ $gallery->description }}">
+                            </div>
+                            {{-- Back of the Card (Caption) --}}
+                            <div class="back p-4 d-flex align-items-center justify-content-center text-center">
+                                <h5 class="text-white fw-bold mb-0">{{ $gallery->description }}</h5>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            {{-- Foto 2 --}}
-            <div class="col-md-4">
-                <div class="gallery-card shadow rounded-4 overflow-hidden">
-                    <img src="{{ asset('assets/img/2.jpg') }}" 
-                         class="img-fluid gallery-img" 
-                         alt="Meja & Kursi" 
-                         data-bs-toggle="modal" data-bs-target="#galleryModal2">
-                </div>
-            </div>
-
-            {{-- Foto 3 --}}
-            <div class="col-md-4">
-                <div class="gallery-card shadow rounded-4 overflow-hidden">
-                    <img src="{{ asset('assets/img/3.jpg') }}" 
-                         class="img-fluid gallery-img" 
-                         alt="Menu Favorit" 
-                         data-bs-toggle="modal" data-bs-target="#galleryModal3">
-                </div>
-            </div>
-            {{-- Foto 1 --}}
-            <div class="col-md-4">
-                <div class="gallery-card shadow rounded-4 overflow-hidden">
-                    <img src="{{ asset('assets/img/4.jpg') }}" 
-                         class="img-fluid gallery-img" 
-                         alt="Interior Resto" 
-                         data-bs-toggle="modal" data-bs-target="#galleryModal1">
-                </div>
-            </div>
-
-            {{-- Foto 2 --}}
-            <div class="col-md-4">
-                <div class="gallery-card shadow rounded-4 overflow-hidden">
-                    <img src="{{ asset('assets/img/5.jpg') }}" 
-                         class="img-fluid gallery-img" 
-                         alt="Meja & Kursi" 
-                         data-bs-toggle="modal" data-bs-target="#galleryModal2">
-                </div>
-            </div>
-
-            {{-- Foto 3 --}}
-            <div class="col-md-4">
-                <div class="gallery-card shadow rounded-4 overflow-hidden">
-                    <img src="{{ asset('assets/img/6.jpg') }}" 
-                         class="img-fluid gallery-img" 
-                         alt="Menu Favorit" 
-                         data-bs-toggle="modal" data-bs-target="#galleryModal3">
-                </div>
-            </div>
-            {{-- Foto 1 --}}
-            <div class="col-md-4">
-                <div class="gallery-card shadow rounded-4 overflow-hidden">
-                    <img src="{{ asset('assets/img/7.jpg') }}" 
-                         class="img-fluid gallery-img" 
-                         alt="Interior Resto" 
-                         data-bs-toggle="modal" data-bs-target="#galleryModal1">
-                </div>
-            </div>
-
-            {{-- Foto 2 --}}
-            <div class="col-md-4">
-                <div class="gallery-card shadow rounded-4 overflow-hidden">
-                    <img src="{{ asset('assets/img/8.jpg') }}" 
-                         class="img-fluid gallery-img" 
-                         alt="Meja & Kursi" 
-                         data-bs-toggle="modal" data-bs-target="#galleryModal2">
-                </div>
-            </div>
-
-            {{-- Foto 3 --}}
-            <div class="col-md-4">
-                <div class="gallery-card shadow rounded-4 overflow-hidden">
-                    <img src="{{ asset('assets/img/1.jpg') }}" 
-                         class="img-fluid gallery-img" 
-                         alt="Menu Favorit" 
-                         data-bs-toggle="modal" data-bs-target="#galleryModal3">
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -107,19 +38,50 @@
          rgba(0, 0, 0, 0.95)) !important; }
 .tone-brown { color: #efefef !important; }
 
-/* Gallery Card */
+/* Container for the flip card */
 .gallery-card {
+    height: 300px; /* Set a fixed height for all cards for consistency */
+    position: relative;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.gallery-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 30px rgba(99, 76, 76, 0.3) !important;
-}
-.gallery-img {
-    height: 500px;
+
+/* The flipper container that holds the front and back */
+.flipper {
+    position: relative;
     width: 100%;
-    object-fit: cover;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+/* The front and back of the card */
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* This hides the back side of the card */
+    display: flex; /* Ensure the content is centered */
+    align-items: center;
+    justify-content: center;
+}
+
+/* The front of the card (image) */
+.front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the space without distortion */
+}
+
+/* The back of the card (caption) */
+.back {
+    background-color: rgba(0, 0, 0, 0.212); /* Dark, semi-transparent background */
+    transform: rotateY(180deg); /* The back is initially rotated 180 degrees */
+    padding: 1rem;
+}
+
+/* The flip effect on hover */
+.gallery-card:hover .flipper {
+    transform: rotateY(180deg);
 }
 </style>
 @endsection
