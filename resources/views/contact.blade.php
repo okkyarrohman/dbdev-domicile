@@ -3,13 +3,13 @@
 @section('content')
 {{-- Hero Section --}}
 <section class="d-flex align-items-center text-white text-center position-relative"
-    style="height:50vh;
+    style="height:75vh;
         background: linear-gradient(180deg, rgba(56, 56, 56, 0.85), rgba(255, 227, 65, 0.445) ),
                     url('{{ asset('assets/img/8.jpg') }}') center/cover no-repeat;">
     <div class="container">
-        <h1 class="display-4 fw-bold mb-3 animate__animated animate__fadeInDown">Hubungi Kami</h1>
+        <h1 class="display-4 fw-bold mb-3 animate__animated animate__fadeInDown">Contact Us</h1>
         <p class="lead animate__animated animate__fadeInUp" style="max-width: 700px; margin:0 auto;">
-            Kami selalu senang mendengar dari Anda. Reservasi, pertanyaan, atau kritik & saran — silakan hubungi kami.
+            We’re always happy to hear from you. For reservations, questions, or feedback — feel free to reach out.
         </p>
     </div>
 </section>
@@ -22,25 +22,38 @@
     <div class="container">
         <div class="row g-4 text-center">
             <div class="col-md-4" data-aos="fade-up">
-                <div class="p-4 rounded-4 shadow-lg h-100" style="background:rgba(255,255,255,0.1); color:#efefef">
-                    <i class="bi bi-geo-alt fs-1 tone-brown mb-3"></i>
-                    <h5 class="fw-bold mb-2">Alamat</h5>
-                    <p class="">Jl. Malioboro No. 123, Yogyakarta</p>
-                </div>
+                <a href="https://maps.google.com/?q=Jl. Malioboro No. 123, Yogyakarta" 
+                target="_blank" 
+                class="text-decoration-none">
+                    <div class="p-4 rounded-4 shadow-lg h-100 card-hover" 
+                        style="background:rgba(255,255,255,0.1); color:#efefef">
+                        <i class="bi bi-geo-alt fs-1 tone-white mb-3"></i>
+                        <h5 class="fw-bold mb-2">Address</h5>
+                        <p class="mb-0">Jl. Malioboro No. 123, Yogyakarta</p>
+                    </div>
+                </a>
             </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="p-4 rounded-4 shadow-lg h-100" style="background:rgba(255,255,255,0.1); color:#efefef">
-                    <i class="bi bi-telephone fs-1 tone-brown mb-3"></i>
-                    <h5 class="fw-bold mb-2">Telepon</h5>
-                    <p class="">+62 812-3456-7890</p>
-                </div>
+            <div class="col-md-4" data-aos="fade-up">
+                <a href="tel:+6281234567890" 
+                class="text-decoration-none">
+                    <div class="p-4 rounded-4 shadow-lg h-100 card-hover" 
+                        style="background:rgba(255,255,255,0.1); color:#efefef">
+                        <i class="bi bi-telephone fs-1 tone-white mb-3"></i>
+                        <h5 class="fw-bold mb-2">Phone</h5>
+                        <p class="mb-0">+62 812-3456-7890</p>
+                    </div>
+                </a>
             </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="p-4 rounded-4 shadow-lg h-100" style="background:rgba(255,255,255,0.1); color:#efefef">
-                    <i class="bi bi-envelope fs-1 tone-brown mb-3"></i>
-                    <h5 class="fw-bold mb-2">Email</h5>
-                    <p class="">info@restorankami.com</p>
-                </div>
+            <div class="col-md-4" data-aos="fade-up">
+                <a href="mailto:info@restorankami.com" 
+                class="text-decoration-none">
+                    <div class="p-4 rounded-4 shadow-lg h-100 card-hover" 
+                        style="background:rgba(255,255,255,0.1); color:#efefef">
+                        <i class="bi bi-envelope fs-1 tone-white mb-3"></i>
+                        <h5 class="fw-bold mb-2">Email</h5>
+                        <p class="mb-0">info@restorankami.com</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -54,27 +67,27 @@
     <div class="container">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6" data-aos="fade-right">
-                <h2 class="fw-bold mb-4 text-white">Kirim Pesan</h2>
+                <h2 class="fw-bold mb-4 text-white">Send a Message</h2>
                 <form action="{{ route('contact.store') }}" method="POST" class="p-4 rounded-4 shadow-lg" style="background:rgba(255,255,255,0.1); color:#efefef">
                     @csrf
                     <div class="mb-3">
-                        <label for="name" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Nama Anda" required>
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
                     </div>
                     <div class="mb-3">
-                        <label for="phone" class="form-label">Nomor Telepon</label>
+                        <label for="phone" class="form-label">Phone Number</label>
                         <input type="tel" class="form-control" id="phone" name="phone" placeholder="08xxxxxxxxxx" required>
                     </div>
                     <div class="mb-3">
-                        <label for="message" class="form-label">Pesan</label>
-                        <textarea class="form-control" id="message" name="message" rows="5" placeholder="Tulis pesan Anda..." required></textarea>
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-custom btn-lg w-100 shadow">Kirim Pesan</button>
+                    <button type="submit" class="btn btn-custom btn-lg w-100 shadow">Send Message</button>
                 </form>
             </div>
             <div class="col-lg-6" data-aos="fade-left">
                 <div class="rounded-4 overflow-hidden shadow-lg" style="height:400px;">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.1656788269724!2d110.3671!3d-7.8014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a578fbff0d9d1%3A0x4027a76e352f740!2sMalioboro%20Yogyakarta!5e0!3m2!1sid!2sid!4v1694142935123!5m2!1sid!2sid"
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.1656788269724!2d110.3671!3d-7.8014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a578fbff0d9d1%3A0x4027a76e352f740!2sMalioboro%20Yogyakarta!5e0!3m2!1sen!2sid!4v1694142935123!5m2!1sen!2sid"
                         width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
@@ -87,9 +100,9 @@
 .bg-cream { background: #fdf6ec !important; }
 .tone-brown { color: #6B4226 !important; }
 
-/* Button Premium */
+/* Premium Button */
 .btn-custom {
-    background: linear-gradient(45deg, #6b422600, #d2b48c00); /* brown ke beige */
+    background: linear-gradient(45deg, #6b422600, #d2b48c00); /* brown to beige */
     color: #fff;
     font-weight: 600;
     border: none;
@@ -118,5 +131,14 @@ h2.fw-bold {
     border-left: 5px solid #D2B48C;
     padding-left: 10px;
 }
+.card-hover {
+    transition: all 0.3s ease-in-out;
+}
+.card-hover:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    background: rgba(255,255,255,0.2);
+}
+
 </style>
 @endsection

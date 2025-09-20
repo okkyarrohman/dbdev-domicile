@@ -13,9 +13,12 @@
                         <div class="flipper">
                             {{-- Front of the Card (Image) --}}
                             <div class="front">
-                                <img src="{{ asset('storage/' . $gallery->image) }}" 
-                                    class="img-fluid gallery-img" 
-                                    alt="{{ $gallery->description }}">
+                                {{-- Skeleton wrapper --}}
+                                <div class="skeleton-wrapper">
+                                    <img data-src="{{ asset('storage/' . $gallery->image) }}" 
+                                        class="img-fluid gallery-img lazy-image" 
+                                        alt="{{ $gallery->description }}">
+                                </div>
                             </div>
                             {{-- Back of the Card (Caption) --}}
                             <div class="back p-4 d-flex align-items-center justify-content-center text-center">
@@ -25,6 +28,11 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+
+        {{-- Pagination --}}
+        <div class="d-flex justify-content-center mt-5">
+            {{ $galleries->links() }}
         </div>
     </div>
 </section>
@@ -40,7 +48,7 @@
 
 /* Container for the flip card */
 .gallery-card {
-    height: 300px; /* Set a fixed height for all cards for consistency */
+    height: 300px; 
     position: relative;
     cursor: pointer;
 }
@@ -54,34 +62,81 @@
     transition: transform 0.6s;
 }
 
-/* The front and back of the card */
 .front, .back {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* This hides the back side of the card */
-    display: flex; /* Ensure the content is centered */
+    backface-visibility: hidden;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* The front of the card (image) */
+/* Image */
 .front img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image fills the space without distortion */
+    object-fit: cover;
+    display: block;
 }
 
-/* The back of the card (caption) */
+/* Skeleton loader */
+.skeleton-wrapper {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #e0e0e0 25%, #f4f4f4 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    position: relative;
+}
+
+@keyframes skeleton-loading {
+    from { background-position: 200% 0; }
+    to { background-position: -200% 0; }
+}
+
+.lazy-image {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.lazy-image.loaded {
+    opacity: 1;
+}
+
+/* Back caption */
 .back {
-    background-color: rgba(0, 0, 0, 0.212); /* Dark, semi-transparent background */
-    transform: rotateY(180deg); /* The back is initially rotated 180 degrees */
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: rotateY(180deg);
     padding: 1rem;
 }
 
-/* The flip effect on hover */
+/* Flip effect */
 .gallery-card:hover .flipper {
     transform: rotateY(180deg);
 }
 </style>
+
+{{-- Lazy Load Script --}}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const lazyImages = document.querySelectorAll(".lazy-image");
+
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src; 
+                img.onload = () => {
+                    img.classList.add("loaded");
+                    img.parentElement.classList.remove("skeleton-wrapper"); // remove skeleton bg
+                };
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    lazyImages.forEach(img => imageObserver.observe(img));
+});
+</script>
 @endsection

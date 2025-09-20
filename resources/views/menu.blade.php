@@ -9,24 +9,32 @@
         <div class="row g-4 justify-content-center">
             
             {{-- Loop through the menus --}}
-            @foreach ($menus as $menu)
+           @foreach ($menus as $menu)
             <div class="col-md-4 col-sm-6">
-                <div class="card h-100 shadow-lg border-0 rounded-4 overflow-hidden" style="background:rgba(255,255,255,0.1); color:#efefef;">
-                    <img src="{{ asset('storage/'.$menu->gambar) }}" class="card-img-top" alt="{{ $menu->name }}" 
-                         style="object-fit: cover; height: 250px;">
+                <div class="card h-100 shadow-lg border-0 rounded-4 overflow-hidden position-relative" 
+                    style="background:rgba(255,255,255,0.1); color:#efefef;">
+
+                    {{-- Favorite badge at top-right --}}
+
+                    <img src="{{ asset('storage/'.$menu->gambar) }}" 
+                        class="card-img-top" 
+                        alt="{{ $menu->name }}" 
+                        style="object-fit: cover; height: 250px;">
+
                     <div class="card-body p-4 text-center">
-                        <h5 class="fw-bold mb-2">{{ $menu->nama }}
-                            {{-- Optional: Display a "Best Seller" badge --}}
-                            @if ($menu->favorite) 
-                                <span class="badge text-dark ms-2">⭐</span>
-                            @endif
-                        </h5>
+                    <div class="d-flex flex-row align-items-center justify-content-center mb-2">
+                        <h5 class="fw-bold mb-0 me-2">{{ $menu->nama }}</h5>
+                        @if ($menu->favorite)
+                            <i class="bi bi-star-fill mb-1 text-warning fs-5 shadow"></i>
+                        @endif
+                    </div>
                         <p class="card-text mb-3">{{ $menu->deskripsi }}</p>
                         <p class="fw-bold fs-5 mb-0">Rp {{ number_format($menu->harga, 0, ',', '.') }}</p>
                     </div>
                 </div>
             </div>
-            @endforeach
+        @endforeach
+
 
         </div>
     </div>
