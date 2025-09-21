@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container-fluid py-4">
+<div class="container-fluid p-5 ">
 
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold text-dark">Manajemen Galeri</h2>
@@ -14,8 +14,11 @@
         @forelse ($galleries as $gallery)
         <div class="col">
             <div class="card h-100 shadow-sm rounded-4 overflow-hidden">
-                <img src="{{ asset('storage/' . $gallery->image) }}" class="card-img-top" 
-                     alt="{{ $gallery->description }}" style="object-fit: cover; height: 250px;">
+               <img src="{{ asset('storage/' . $gallery->image) }}" 
+                    class="card-img-top" 
+                    alt="{{ $gallery->description }}" 
+                    style="object-fit: cover; height: 250px;" 
+                    loading="lazy">
                 <div class="card-body">
                     <p class="card-text">{{ $gallery->description }}</p>
                 </div>

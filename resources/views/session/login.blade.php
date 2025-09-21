@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.session')
 
 @section('content')
 <section class="d-flex align-items-center justify-content-center vh-100 bg-light">

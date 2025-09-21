@@ -22,36 +22,36 @@
     <div class="container">
         <div class="row g-4 text-center">
             <div class="col-md-4" data-aos="fade-up">
-                <a href="https://maps.google.com/?q=Jl. Malioboro No. 123, Yogyakarta" 
+                <a href="https://maps.app.goo.gl/RmNScrSWqndsnDBs5" 
                 target="_blank" 
                 class="text-decoration-none">
                     <div class="p-4 rounded-4 shadow-lg h-100 card-hover" 
                         style="background:rgba(255,255,255,0.1); color:#efefef">
                         <i class="bi bi-geo-alt fs-1 tone-white mb-3"></i>
                         <h5 class="fw-bold mb-2">Address</h5>
-                        <p class="mb-0">Jl. Malioboro No. 123, Yogyakarta</p>
+                        <p class="mb-0">Jl. Sumatera No.35, Gubeng, Kec. Gubeng, Surabaya</p>
                     </div>
                 </a>
             </div>
             <div class="col-md-4" data-aos="fade-up">
-                <a href="tel:+6281234567890" 
+                <a href="https://api.whatsapp.com/send/?phone=62811358998&text&type=phone_number&app_absent=0" 
                 class="text-decoration-none">
                     <div class="p-4 rounded-4 shadow-lg h-100 card-hover" 
                         style="background:rgba(255,255,255,0.1); color:#efefef">
                         <i class="bi bi-telephone fs-1 tone-white mb-3"></i>
                         <h5 class="fw-bold mb-2">Phone</h5>
-                        <p class="mb-0">+62 812-3456-7890</p>
+                        <p class="mb-0">+62 811358998</p>
                     </div>
                 </a>
             </div>
             <div class="col-md-4" data-aos="fade-up">
-                <a href="mailto:info@restorankami.com" 
+                <a href="https://www.instagram.com/domicilesby/?utm_source=ig_web_button_share_sheet" 
                 class="text-decoration-none">
                     <div class="p-4 rounded-4 shadow-lg h-100 card-hover" 
                         style="background:rgba(255,255,255,0.1); color:#efefef">
-                        <i class="bi bi-envelope fs-1 tone-white mb-3"></i>
-                        <h5 class="fw-bold mb-2">Email</h5>
-                        <p class="mb-0">info@restorankami.com</p>
+                        <i class="bi bi-instagram fs-1 tone-white mb-3"></i>
+                        <h5 class="fw-bold mb-2">Instagram</h5>
+                        <p class="mb-0">DOMICILESBY</p>
                     </div>
                 </a>
             </div>

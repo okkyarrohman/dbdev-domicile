@@ -9,18 +9,24 @@ use App\Models\Menu;
 
 class MenuController extends Controller
 {
-    public function index(Request $request)
+public function index(Request $request)
 {
-    $search = $request->input('search');
+    $search   = $request->input('search');
+    $favorite = $request->input('favorite'); // ambil dari query string
 
     $menus = Menu::when($search, function ($query, $search) {
-            $query->where('nama', 'like', "%{$search}%")
-                  ->orWhere('deskripsi', 'like', "%{$search}%");
-        })
-        ->orderBy('created_at', 'desc')
-        ->paginate(9);
+                $query->where(function ($q) use ($search) {
+                    $q->where('nama', 'like', "%{$search}%")
+                      ->orWhere('deskripsi', 'like', "%{$search}%");
+                });
+            })
+            ->when($favorite !== null && $favorite !== '', function ($query) use ($favorite) {
+                $query->where('favorite', $favorite); // filter favorit (0/1)
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(9);
 
-    return view('admin.menu', compact('menus', 'search'));
+    return view('admin.menu', compact('menus', 'search', 'favorite'));
 }
     public function update(Request $request, $id)
     {

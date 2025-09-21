@@ -66,7 +66,7 @@
     <div class="container">
         <div class="row align-items-center g-5">
             <div class="col-lg-6 " data-aos="fade-right">
-                <img src="{{ asset('assets/img/2.jpg') }}" alt="Restaurant Interior" class="img-fluid m-auto rounded-4 shadow-lg" style="height:750px;">
+                <img src="{{ asset('assets/img/3.jpg') }}" alt="Restaurant Interior" class="img-fluid m-auto rounded-4 shadow-lg" style="height:750px;">
             </div>
               <div class="col-md-6" data-aos="zoom-in">
                 <div class="p-4 rounded-4 shadow-lg h-100 text-center" style="background:rgba(255,255,255,0.1); color:#efefef">
@@ -85,7 +85,7 @@
                 </div>
             </div>
             <div class="col-lg-6" data-aos="fade-right">
-                <img src="{{ asset('assets/img/8.jpg') }}" alt="Signature Menu" class="img-fluid m-auto rounded-4 shadow-lg" style="height:750px;">
+                <img src="{{ asset('assets/img/9.jpg') }}" alt="Signature Menu" class="img-fluid m-auto rounded-4 shadow-lg" style="height:750px;">
             </div>
         </div>
 

@@ -19,16 +19,19 @@ route::get('/aboutus', [AboutusController::class, 'index'])->name('aboutus');
 route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/send-message', [ContactController::class, 'store'])->name('contact.store');
 route::get('/menu', [MenuController::class, 'index'])->name('menu');
-Route::get('/admin/login', [SessionController::class, 'showLogin'])->name('admin.login');
+Route::get('/admin/login', [SessionController::class, 'showLogin'])->name('admin.login')->middleware('guest');
 Route::post('/admin/login', [SessionController::class, 'login']);
 Route::post('/admin/logout', [SessionController::class, 'logout'])->name('admin.logout');
-Route::get('/admin/dashboard', [AdminHomeController::class, 'index'])->name('admin.home')->middleware('auth');
-Route::get('/admin/menu', [AdminMenuController::class, 'index'])->name('admin.menu')->middleware('auth');
-Route::get('/admin/report', [AdminReportController::class, 'index'])->name('admin.report')->middleware('auth');
-Route::post('admin/menu/store', [AdminMenuController::class, 'store'])->name('menu.store');
-Route::prefix('admin')->name('admin.')->group(function () {    
+// Protected routes
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminHomeController::class, 'index'])->name('home');
+    Route::get('/menu', [AdminMenuController::class, 'index'])->name('menu');
+    Route::get('/report', [AdminReportController::class, 'index'])->name('report');
+    Route::post('/menu/store', [AdminMenuController::class, 'store'])->name('menu.store');
+    Route::put('/menu/{id}', [AdminMenuController::class, 'update'])->name('menu.update');
+    Route::delete('/menu/{id}', [AdminMenuController::class, 'destroy'])->name('menu.destroy');
     Route::resource('galleries', AdminGalleryController::class);
 });
-// routes/web.php
-Route::put('admin/menu/{id}', [AdminMenuController::class, 'update'])->name('menu.update');
-Route::delete('admin/menu/{id}', [AdminMenuController::class, 'destroy'])->name('menu.destroy');
+Route::get('/login', function () {
+    return redirect()->route('admin.login');
+})->name('login');

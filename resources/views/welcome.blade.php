@@ -20,7 +20,7 @@
 
         <p class="mb-3 animate__animated animate__fadeInUp" 
             style="color:#E6D5B8; font-weight:500; text-shadow: 1px 1px 6px rgba(0,0,0,0.5);">
-            <i class="bi bi-clock-fill me-2"></i> Open: 10:00 AM - 10:00 PM
+            <i class="bi bi-clock-fill me-2"></i> Sunday to Thursday: 11.00 to 23.00 | Friday to Saturday: to 24.00
         </p>
 
         <a href="/menu" 
@@ -127,7 +127,7 @@
                             <i class="bi bi-telephone-fill text-custom me-3 fs-4"></i>
                             <div>
                                 <span class="d-block fw-bold">Phone</span>
-                                <span class="d-block text-white fs-6">(031) 5016900</span>
+                                <span class="d-block text-white fs-6">+62 811358998</span>
                             </div>
                         </div>
                     </li>

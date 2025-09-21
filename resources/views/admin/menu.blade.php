@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container-fluid py-4">
+<div class="container-fluid p-5">
 
     <!-- Header -->
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold text-dark">🍽️ Manajemen Menu</h2>
+        <h2 class="fw-bold text-dark">Manajemen Menu</h2>
         <a href="#" class="btn btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#menuModal">
             <i class="bi bi-plus-circle me-2"></i> Tambah Menu
         </a>
@@ -18,7 +18,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
-                <form action="{{ route('menu.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.menu.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         {{-- Nama --}}
@@ -69,14 +69,22 @@
 
     <!-- Search -->
     <form method="GET" action="{{ route('admin.menu') }}" class="mb-4">
-        <div class="input-group">
+        <div class="input-group w-25">
             <input type="text" name="search" value="{{ $search }}" class="form-control"
-                   placeholder="Cari menu...">
+                placeholder="Cari menu...">
+
+            <select name="favorite" class="form-select" style="max-width: 150px;">
+                <option value="">Semua</option>
+                <option value="1" {{ $favorite === '1' ? 'selected' : '' }}>Favorite</option>
+                <option value="0" {{ $favorite === '0' ? 'selected' : '' }}>Bukan Favorite</option>
+            </select>
+
             <button class="btn btn-outline-secondary" type="submit">
                 <i class="bi bi-search"></i>
             </button>
         </div>
     </form>
+
 
 <!-- Menu List -->
 <div class="row g-4">
@@ -109,7 +117,7 @@
 
                             <!-- Tombol Hapus -->
                             <form id="delete-form-{{ $menu->id }}" 
-                                action="{{ route('menu.destroy', $menu->id) }}" 
+                                action="{{ route('admin.menu.destroy', $menu->id) }}" 
                                 method="POST" 
                                 style="display: inline;">
                                 @csrf
@@ -133,7 +141,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
 
-                    <form action="{{ route('menu.update', $menu->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.menu.update', $menu->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="modal-body">
