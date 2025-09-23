@@ -62,33 +62,70 @@
 {{-- Contact Form --}}
 <section class="py-5 "style="background: linear-gradient(
         0deg,
-        rgb(124, 106, 1),
-        rgba(0, 0, 0, 0.95));">>
+        rgba(250, 237, 212, 0.87),
+        rgba(110, 86, 34, 0.55));">>
     <div class="container">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6" data-aos="fade-right">
-                <h2 class="fw-bold mb-4 text-white">Send a Message</h2>
+                <h2 class="fw-bold mb-4 text-white">Send us a message</h2>
                 <form action="{{ route('contact.store') }}" method="POST" class="p-4 rounded-4 shadow-lg" style="background:rgba(255,255,255,0.1); color:#efefef">
                     @csrf
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
+                        <label for="name" class="form-label" style="color: #8e3c20">Name</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
                     </div>
                     <div class="mb-3">
-                        <label for="phone" class="form-label">Phone Number</label>
+                        <label for="phone" class="form-label" style="color: #8e3c20">Whatsapp Number</label>
                         <input type="tel" class="form-control" id="phone" name="phone" placeholder="08xxxxxxxxxx" required>
                     </div>
                     <div class="mb-3">
-                        <label for="message" class="form-label">Message</label>
+                        <label for="name" class="form-label" style="color: #8e3c20">Subject</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label" style="color: #8e3c20">Message</label>
                         <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
                     </div>
                     <button type="submit" class="btn btn-custom btn-lg w-100 shadow">Send Message</button>
                 </form>
             </div>
-            <div class="col-lg-6" data-aos="fade-left">
-                <div class="rounded-4 overflow-hidden shadow-lg" style="height:400px;">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.1656788269724!2d110.3671!3d-7.8014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a578fbff0d9d1%3A0x4027a76e352f740!2sMalioboro%20Yogyakarta!5e0!3m2!1sen!2sid!4v1694142935123!5m2!1sen!2sid"
-                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <div class="col-lg-6 h-full" data-aos="fade-left">
+                <h2 class="fw-bold mb-4 text-white">Send us a message</h2>
+                <div class="col-lg-6" data-aos="fade-right">
+                    <ul class="list-unstyled fs-5" style="color: #8e3c20">
+                        <li class="mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-geo-alt-fill text-custom me-3 fs-4"></i>
+                                <div>
+                                    <span class="d-block fw-bold">Location</span>
+                                    <span class="d-block fs-6">Jl. Sumatera No.35, Gubeng, Kec. Gubeng, Surabaya</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-telephone-fill text-custom me-3 fs-4"></i>
+                                <div>
+                                    <span class="d-block fw-bold">Phone</span>
+                                    <span class="d-block fs-6">+62 811358998</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-clock-fill text-custom me-3 fs-4"></i>
+                                <div>
+                                    <span class="d-block fw-bold">Open</span>
+                                    <div class="d-flex flex-row justify-content-between gap-5">
+                                        <span class="d-block fs-6">
+                                            Monday to Sunday  <br>
+                                            10:00 AM - 10:00 PM
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -103,7 +140,7 @@
 /* Premium Button */
 .btn-custom {
     background: linear-gradient(45deg, #6b422600, #d2b48c00); /* brown to beige */
-    color: #fff;
+    color: #8e3c20;
     font-weight: 600;
     border: none;
     letter-spacing: 0.5px;
@@ -111,8 +148,9 @@
 }
 .btn-custom:hover {
     transform: translateY(-3px);
-    background: linear-gradient(45deg, #00000054, #00000054);
-    color: #fff;
+    background: linear-gradient(45deg,   rgba(110, 85, 34, 0.55),
+        rgba(110, 86, 34, 0.55));
+    color: #efefef;
     box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 

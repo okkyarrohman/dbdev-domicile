@@ -1,24 +1,28 @@
-<nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark fixed-top py-3" style="transition: background 0.3s, padding 0.3s;">
+<nav id="mainNavbar" class="navbar navbar-expand-lg fixed-top py-3">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="{{ url('/') }}">
-            <img src="{{ asset('assets/img/domicile.png') }}" alt="Logo" class="img-fluid" style="max-height:40px;">
+        <!-- Brand / Logo -->
+        <a class="navbar-brand fw-bold text-uppercase" href="{{ url('/') }}">
+            <img src="{{ asset('assets/img/logos.png') }}" alt="Crab n Co Logo" class="img-fluid" style="max-height:50px;">
         </a>
+
+        <!-- Toggler -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        <!-- Menu -->
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
                 <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('/gallery') }}">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('/menu') }}">Menu</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('/aboutus') }}">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('/contact') }}">Contact</a></li>
                 <li class="nav-item">
-                    <a class="btn ms-3" 
-                    href="https://api.whatsapp.com/send/?phone=62811358998&text&type=phone_number&app_absent=0" 
-                    target="_blank"
-                    style="color:#efefef; background-color: #ffffff11;">
+                    <a class="btn reservasi-btn ms-3" 
+                       href="https://api.whatsapp.com/send/?phone=62811358998&text&type=phone_number&app_absent=0" 
+                       target="_blank">
                         <i class="bi bi-box-arrow-in-right me-1"></i> Reservasi
                     </a>
                 </li>
@@ -26,40 +30,66 @@
         </div>
     </div>
 </nav>
+
 <style>
+/* Navbar Base */
 #mainNavbar {
-    background: rgba(27,27,27,0.5);
-    backdrop-filter: blur(10px);
+    background: rgba(250, 237, 212, 0.87); /* hijau calm transparan */
+    backdrop-filter: blur(12px);
     padding: 1rem 0;
     transition: all 0.3s ease;
 }
+
+/* Saat di-scroll */
 #mainNavbar.scrolled {
-    background: rgba(27,27,27,0.85);
+    background: rgba(250, 237, 212, 0.55); /* lebih pekat */
     padding: 0.5rem 0;
 }
 
-/* Navbar link styling */
+/* Navbar Brand */
+#mainNavbar .navbar-brand {
+    font-size: 1.25rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Navbar Links */
 #mainNavbar .nav-link {
-    color: #fff !important;
+    color: #75311a !important; /* cream */
     font-weight: 500;
-    transition: color 0.3s;
+    transition: color 0.3s, transform 0.2s;
 }
 
 #mainNavbar .nav-link:hover {
-    color: #ffc107 !important;
+    color: #8e3c20 !important; /* maroon elegan */
+    transform: translateY(-2px);
+}
+
+/* Reservasi Button */
+.reservasi-btn {
+    color: #faedd4;
+    background-color: #8e3c20;
+    border-radius: 30px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.reservasi-btn:hover {
+    background-color: #373405;
+    color: #faedd4;
 }
 </style>
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const navbar = document.getElementById('mainNavbar');
-
-window.addEventListener('scroll', function() {
-    console.log(window.scrollY);
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
 });
 </script>

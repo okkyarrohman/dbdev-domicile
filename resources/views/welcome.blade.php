@@ -2,62 +2,45 @@
 
 @section('content')
 {{-- Hero Section --}}
-<section id="hero" class="d-flex align-items-center text-center text-white position-relative"
-    style="height:75vh;
-        background: linear-gradient(180deg, rgba(56, 56, 56, 0.85), rgba(255, 227, 65, 0.445) ),
-                    url({{ asset('assets/img/benner.jpg') }}) center/cover no-repeat;">
-
-    <div class="container">
-        <h1 class="display-4 fw-bold animate__animated animate__fadeInDown" 
-            style="text-shadow: 2px 2px 12px rgba(0,0,0,0.7);">
-            <span style="color:#E6D5B8">DOMICILE Kitchen & Lounge</span>
-        </h1>
-
-        <p class="lead mt-3 animate__animated animate__fadeInUp" 
-            style="color:#E6D5B8; text-shadow: 1px 1px 8px rgba(0,0,0,0.6);">
-            Casual dining
-        </p>
-
-        <p class="mb-3 animate__animated animate__fadeInUp" 
-            style="color:#E6D5B8; font-weight:500; text-shadow: 1px 1px 6px rgba(0,0,0,0.5);">
-            <i class="bi bi-clock-fill me-2"></i> Sunday to Thursday: 11.00 to 23.00 | Friday to Saturday: to 24.00
-        </p>
-
-        <a href="/menu" 
-            class="btn btn-lg shadow animate__animated animate__pulse animate__infinite fs-semibold"
-            style="background: linear-gradient(45deg, #7b767273, #7b767257); color:#efefef; border:none; transition: all 0.3s;">
-            <span><i class="bi bi-book mt-5"></i></span> Menu
-        </a>
-    </div>
-
-</section>
-
-{{-- About Section --}}
-<section id="about" class="py-5" style="background: linear-gradient(
-        0deg,
-        rgb(124, 106, 1),
-        rgba(0, 0, 0, 0.95));">
-    <div class="container">
-        <div class="row align-items-center g-5">
-            <div class="col-md-6" data-aos="fade-right">
-                <img src="{{ asset('assets/img/resto.jpeg') }}" class="img-fluid rounded-4 shadow-lg" alt="Chef">
+<section id="hero" class="position-relative text-center text-white d-flex align-items-center" style="height:90vh;">
+    <!-- Background Slider -->
+    <div id="heroCarousel" class="carousel slide carousel-fade position-absolute top-0 start-0 w-100 h-100" data-bs-ride="carousel">
+        <div class="carousel-inner h-100">
+            <div class="carousel-item active h-100">
+                <div class="bg-slide h-100" style="background: linear-gradient(180deg, rgba(56,56,56,0.6), rgba(0,0,0,0.4)), url('{{ asset('assets/img/benner.jpg') }}') center/cover no-repeat;"></div>
             </div>
-            <div class="col-md-6 text-center text-md-start" data-aos="fade-left">
-                <h2 class="fw-bold mb-3" style="color:#efefef;">About Us</h2>
-                <p class="lead" style="color:#efefef;">
-                    DOMICILE Kitchen & Lounge serves not just a wide range selection of Western – Eastern fusion dining experiences, but also spontaneous ambience, which is located in the heart of the Heroes city. Indulge your most beloved people and yourself in our casual bistro & extraordinaire lounge.
-                </p>
-                <a href="/aboutus" class="btn btn-custom mt-3 shadow text-white">About Us</a>
+            <div class="carousel-item h-100">
+                <div class="bg-slide h-100" style="background: linear-gradient(180deg, rgba(56,56,56,0.6), rgba(0,0,0,0.4)), url('{{ asset('assets/img/1.jpg') }}') center/cover no-repeat;"></div>
+            </div>
+            <div class="carousel-item h-100">
+                <div class="bg-slide h-100" style="background: linear-gradient(180deg, rgba(56,56,56,0.6), rgba(0,0,0,0.4)), url('{{ asset('assets/img/3.jpg') }}') center/cover no-repeat;"></div>
             </div>
         </div>
     </div>
+
+    <!-- Overlay Content -->
+    <div class="container position-relative z-2">
+        <h1 class="display-4 fw-bold animate__animated animate__fadeInDown heading" 
+            style="text-shadow: 2px 2px 12px rgba(0,0,0,0.7); color:#faedd4;">
+            Welcome to <span style="color:#8e3c20;">Crab n Co</span>
+        </h1>
+
+        <a href="https://api.whatsapp.com/send/?phone=62811358998&text&type=phone_number&app_absent=0" 
+           target="_blank"
+           class="btn btn-lg shadow mt-4 animate__animated animate__fadeInUp"
+           style="background: #8e3c20; color:#faedd4; border-radius: 30px; padding:0.75rem 2rem; font-weight:600; transition: all 0.3s;">
+           <i class="bi bi-calendar-check me-2"></i> Reserve Now
+        </a>
+    </div>
 </section>
+
 <section class="py-5 bg-light"  style="background: linear-gradient(
         0deg,
-        rgba(0, 0, 0, 0.95),
-        rgb(124, 106, 1));">
+        rgba(110, 86, 34, 0.55),
+        rgba(250, 237, 212, 0.87)
+        );">
     <div class="container">
-        <h2 class="text-center fw-bold mb-5" style="color: #efefef">Menus</h2>
+        <h2 class="text-center fw-bold mb-5" style="color: #8e3c20">OUR SIGNATURE MENU</h2>
 
         <div id="favoriteMenuCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
             <div class="carousel-inner">
@@ -76,7 +59,7 @@
                                             <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25"></div>
                                         </div>
                                         <div class="card-body text-center">
-                                            <h5 class="card-title fw-bold">{{ $menu->nama }}</h5>
+                                            <h5 class=" fw-bold" style="color: #8e3c20">{{ $menu->nama }}</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -99,26 +82,49 @@
         </div>
     </div>
 </section>
+<section id="about" class="py-5" style="background: linear-gradient(
+        0deg,
+        rgba(250, 237, 212, 0.87),
+        rgba(110, 86, 34, 0.55));">
+    <div class="container">
+        <div class="row justify-content-center text-center px-4" data-aos="fade-up">
+            <div class="col-lg-8">
+                <h2 class="fw-bold mb-3" style="color:#8e3c20; font-size:2.5rem; letter-spacing:2px;">
+                    OUR STORY
+                </h2>
+                <hr class="mx-auto mb-4" style="width:80px; height:3px; background:#8e3c20; opacity:0.9; border:none;">
+                <p class="lead" style="color:#5a2d17; font-size:1.2rem; line-height:1.8;">
+                    At <span class="fw-bold">DOMICILE Kitchen & Lounge</span>, we serve not only a wide selection of 
+                    Western–Eastern fusion dining experiences, but also a spontaneous ambience located 
+                    in the heart of the Heroes city. <br><br>
+                    Indulge your beloved ones and yourself in our <em>casual bistro</em> & 
+                    <em>extraordinaire lounge</em>, where every moment is designed to be memorable.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
 
 
 {{-- Info & Contact Section --}}
 <section id="info" class="py-5" style="background: linear-gradient(
         0deg,
-        rgb(124, 106, 1),
-        rgba(0, 0, 0, 0.95));">
+        rgba(110, 86, 34, 0.55),
+        rgba(250, 237, 212, 0.87));">
     <div class="container text-white">
         <div class="row g-5 align-items-center">
             {{-- Info --}}
             <div class="col-lg-6" data-aos="fade-right">
-                <h2 class="fw-bold mb-4" style="color:#efefef;">Information</h2>
-                <ul class="list-unstyled fs-5">
+                <ul class="list-unstyled fs-5" style="color: #8e3c20">
                     <li class="mb-3">
                         <div class="d-flex align-items-center">
                             <i class="bi bi-geo-alt-fill text-custom me-3 fs-4"></i>
                             <div>
                                 <span class="d-block fw-bold">Location</span>
-                                <span class="d-block text-white fs-6">Jl. Sumatera No.35, Gubeng, Kec. Gubeng, Surabaya</span>
+                                <span class="d-block fs-6">Jl. Sumatera No.35, Gubeng, Kec. Gubeng, Surabaya</span>
                             </div>
                         </div>
                     </li>
@@ -127,7 +133,7 @@
                             <i class="bi bi-telephone-fill text-custom me-3 fs-4"></i>
                             <div>
                                 <span class="d-block fw-bold">Phone</span>
-                                <span class="d-block text-white fs-6">+62 811358998</span>
+                                <span class="d-block fs-6">+62 811358998</span>
                             </div>
                         </div>
                     </li>
@@ -137,13 +143,9 @@
                             <div>
                                 <span class="d-block fw-bold">Open</span>
                                 <div class="d-flex flex-row justify-content-between gap-5">
-                                    <span class="d-block text-white fs-6">
-                                        Sunday to Thursday  <br>
+                                    <span class="d-block fs-6">
+                                        Monday to Sunday  <br>
                                         10:00 AM - 10:00 PM
-                                    </span>
-                                    <span class="d-block text-white fs-6">
-                                        Friday to Saturday  <br>
-                                        10:00 AM - 24:00 PM
                                     </span>
                                 </div>
                             </div>
@@ -192,7 +194,7 @@ body {
     transform: translateY(-12px) scale(1.03);
     box-shadow: 0 15px 30px rgba(0,0,0,0.25);
 }
-.text-custom { color: #efefef !important; }
+.text-custom { color: #8e3c20 !important; }
 
 .text-beige { color: #E6D5B8; }
 .card img {
@@ -201,4 +203,57 @@ body {
 .card:hover img {
     transform: scale(1.05);
 }
+#hero .bg-slide {
+    width: 100%;
+    height: 100%;
+}
+#hero:before {
+    content: "";
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.25);
+    z-index:1;
+}
 </style>
+@push('styles')
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Global font setup */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    color: #1C1C1C;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6,
+.heading {
+    font-family: 'DM Serif Display', serif;
+    letter-spacing: 1px;
+}
+
+/* Subheading (taglines, section titles kecil) */
+.subheading {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: #8e3c20;
+}
+
+/* Body */
+p, .lead, span, li {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+/* Branding tagline “The Season” */
+.tagline {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8e3c20;
+}
+</style>
+@endpush
