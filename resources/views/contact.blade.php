@@ -4,58 +4,10 @@
 {{-- Hero Section --}}
 <section class="d-flex align-items-center text-white text-center position-relative"
     style="height:75vh;
-        background: linear-gradient(180deg, rgba(56, 56, 56, 0.85), rgba(255, 227, 65, 0.445) ),
+        background: linear-gradient(180deg, rgba(56,56,56,0.6), rgba(0,0,0,0.4)),
                     url('{{ asset('assets/img/8.jpg') }}') center/cover no-repeat;">
     <div class="container">
         <h1 class="display-4 fw-bold mb-3 animate__animated animate__fadeInDown">Contact Us</h1>
-        <p class="lead animate__animated animate__fadeInUp" style="max-width: 700px; margin:0 auto;">
-            We’re always happy to hear from you. For reservations, questions, or feedback — feel free to reach out.
-        </p>
-    </div>
-</section>
-
-{{-- Contact Info --}}
-<section class="py-5" style="background: linear-gradient(
-        0deg,
-        rgba(0, 0, 0, 0.95),
-        rgb(124, 106, 1));">
-    <div class="container">
-        <div class="row g-4 text-center">
-            <div class="col-md-4" data-aos="fade-up">
-                <a href="https://maps.app.goo.gl/RmNScrSWqndsnDBs5" 
-                target="_blank" 
-                class="text-decoration-none">
-                    <div class="p-4 rounded-4 shadow-lg h-100 card-hover" 
-                        style="background:rgba(255,255,255,0.1); color:#efefef">
-                        <i class="bi bi-geo-alt fs-1 tone-white mb-3"></i>
-                        <h5 class="fw-bold mb-2">Address</h5>
-                        <p class="mb-0">Jl. Sumatera No.35, Gubeng, Kec. Gubeng, Surabaya</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4" data-aos="fade-up">
-                <a href="https://api.whatsapp.com/send/?phone=62811358998&text&type=phone_number&app_absent=0" 
-                class="text-decoration-none">
-                    <div class="p-4 rounded-4 shadow-lg h-100 card-hover" 
-                        style="background:rgba(255,255,255,0.1); color:#efefef">
-                        <i class="bi bi-telephone fs-1 tone-white mb-3"></i>
-                        <h5 class="fw-bold mb-2">Phone</h5>
-                        <p class="mb-0">+62 811358998</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4" data-aos="fade-up">
-                <a href="https://www.instagram.com/domicilesby/?utm_source=ig_web_button_share_sheet" 
-                class="text-decoration-none">
-                    <div class="p-4 rounded-4 shadow-lg h-100 card-hover" 
-                        style="background:rgba(255,255,255,0.1); color:#efefef">
-                        <i class="bi bi-instagram fs-1 tone-white mb-3"></i>
-                        <h5 class="fw-bold mb-2">Instagram</h5>
-                        <p class="mb-0">DOMICILESBY</p>
-                    </div>
-                </a>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -65,7 +17,7 @@
         rgba(250, 237, 212, 0.87),
         rgba(110, 86, 34, 0.55));">>
     <div class="container">
-        <div class="row g-5 align-items-center">
+        <div class="row g-5 align-items-stretch ">
             <div class="col-lg-6" data-aos="fade-right">
                 <h2 class="fw-bold mb-4 text-white">Send us a message</h2>
                 <form action="{{ route('contact.store') }}" method="POST" class="p-4 rounded-4 shadow-lg" style="background:rgba(255,255,255,0.1); color:#efefef">
@@ -80,7 +32,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label" style="color: #8e3c20">Subject</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Subject" required>
                     </div>
                     <div class="mb-3">
                         <label for="message" class="form-label" style="color: #8e3c20">Message</label>
@@ -89,39 +41,49 @@
                     <button type="submit" class="btn btn-custom btn-lg w-100 shadow">Send Message</button>
                 </form>
             </div>
-            <div class="col-lg-6 h-full" data-aos="fade-left">
-                <h2 class="fw-bold mb-4 text-white">Send us a message</h2>
-                <div class="col-lg-6" data-aos="fade-right">
-                    <ul class="list-unstyled fs-5" style="color: #8e3c20">
-                        <li class="mb-3">
+            <div class="col-lg-6 d-flex" data-aos="fade-left">
+                <div class="w-100 p-4 rounded-4 d-flex flex-column h-100" 
+                    style="color: #8e3c20;">
+                    
+                    <h2 class="fw-bold mb-4" style="color: #8e3c20">Details</h2>
+                    
+                    <ul class="list-unstyled fs-5 flex-grow-1 d-flex flex-column justify-content-between py-5 my-5" 
+                        style="color: #8e3c20;">
+                        
+                        <!-- Phone -->
+                        <li class="mb-4">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-telephone-fill text-custom me-3 fs-4"></i>
+                                <div>
+                                    <span class="d-block fw-bold">Call Us</span>
+                                    <span class="d-block fs-6">+62 821-4009-8833</span>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Location -->
+                        <li class="mb-4">
                             <div class="d-flex align-items-center">
                                 <i class="bi bi-geo-alt-fill text-custom me-3 fs-4"></i>
                                 <div>
                                     <span class="d-block fw-bold">Location</span>
-                                    <span class="d-block fs-6">Jl. Sumatera No.35, Gubeng, Kec. Gubeng, Surabaya</span>
+                                    <span class="d-block fs-6">
+                                        Crab n Co Restaurant, Jl Bukit Golf D1-12 Citraland, Surabaya
+                                    </span>
                                 </div>
                             </div>
                         </li>
-                        <li class="mb-3">
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-telephone-fill text-custom me-3 fs-4"></i>
-                                <div>
-                                    <span class="d-block fw-bold">Phone</span>
-                                    <span class="d-block fs-6">+62 811358998</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="mb-3">
+
+                        <!-- Open Hours -->
+                        <li>
                             <div class="d-flex align-items-center">
                                 <i class="bi bi-clock-fill text-custom me-3 fs-4"></i>
                                 <div>
                                     <span class="d-block fw-bold">Open</span>
-                                    <div class="d-flex flex-row justify-content-between gap-5">
-                                        <span class="d-block fs-6">
-                                            Monday to Sunday  <br>
-                                            10:00 AM - 10:00 PM
-                                        </span>
-                                    </div>
+                                    <span class="d-block fs-6">
+                                        Monday to Sunday <br>
+                                        10:00 AM – 10:00 PM
+                                    </span>
                                 </div>
                             </div>
                         </li>
@@ -165,7 +127,7 @@
 
 /* Section Title */
 h2.fw-bold {
-    color: #efefef !important;
+    color: #8e3c20 !important;
     border-left: 5px solid #D2B48C;
     padding-left: 10px;
 }

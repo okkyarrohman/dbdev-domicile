@@ -5,7 +5,7 @@
 <section class="d-flex align-items-center text-white text-center position-relative"
     style="height:75vh;
         background: linear-gradient(180deg, rgba(7, 7, 7, 0.85), rgba(255, 255, 255, 0.171) ),
-        url('{{ asset('assets/img/3.jpg') }}') center/cover no-repeat;">
+        url('{{ asset('assets/img/5.jpg') }}') center/cover no-repeat;">
     <div class="container">
         <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown" style="color: #faedd4">About Us</h1>
     </div>

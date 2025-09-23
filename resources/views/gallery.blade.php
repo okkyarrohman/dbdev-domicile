@@ -1,50 +1,112 @@
 @extends('layouts.app')
 
 @section('content')
+<section class="d-flex align-items-center text-white text-center position-relative"
+    style="height:75vh;
+        background: linear-gradient(180deg, rgba(7, 7, 7, 0.85), rgba(255, 255, 255, 0.171) ),
+        url('{{ asset('assets/img/1.jpg') }}') center/cover no-repeat;">
+    <div class="container">
+        <h1 class="display-3 fw-bold mb-3 animate__animated animate__fadeInDown" style="color: #faedd4">Gallery</h1>
+    </div>
+</section>
 {{-- Gallery Section --}}
 <section class="py-5 bg-cream" style="min-height: 100vh; display: flex; align-items: center;">
     <div class="container" style="margin-top: 80px">
-        <h2 class="text-center fw-bold mb-5 tone-brown">Gallery</h2>
+        <h2 class="text-center fw-bold mb-5 tone-brown">GALLERIES OF AMBIENCE</h2>
 
-        <div class="row g-4">
-            @foreach ($galleries as $gallery)
-                <div class="col-md-4">
-                    <div class="gallery-card shadow rounded-4 overflow-hidden">
-                        <div class="flipper">
-                            {{-- Front of the Card (Image) --}}
-                            <div class="front">
-                                {{-- Skeleton wrapper --}}
-                                <div class="skeleton-wrapper">
-                                    <img data-src="{{ asset('storage/' . $gallery->image) }}" 
-                                        class="img-fluid gallery-img lazy-image" 
-                                        alt="{{ $gallery->description }}">
+        <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @foreach ($galleries->chunk(3) as $chunkIndex => $chunk)
+                    <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}">
+                        <div class="row g-4 justify-content-center">
+                            @foreach ($chunk as $gallery)
+                                <div class="col-md-4">
+                                    <div class="card shadow rounded-4 overflow-hidden h-100 border-0">
+                                        <div class="card-img-top d-flex align-items-end p-3"
+                                            style="height: 500px; 
+                                                background: url('{{ asset('storage/' . $gallery->image) }}') center center / cover no-repeat;
+                                                position: relative;">
+
+                                            <!-- Overlay gelap agar teks lebih jelas -->
+                                            <div class="w-100 text-center fw-bold text-white py-2"
+                                                style="background: rgba(0,0,0,0.5); border-radius: 0 0 12px 12px;">
+                                                {{ $gallery->description }}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            {{-- Back of the Card (Caption) --}}
-                            <div class="back p-4 d-flex align-items-center justify-content-center text-center">
-                                <h5 class="text-white fw-bold mb-0">{{ $gallery->description }}</h5>
-                            </div>
+                            @endforeach
+
                         </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
 
-        {{-- Pagination --}}
-        <div class="d-flex justify-content-center mt-5">
-            {{ $galleries->links() }}
+            <!-- Controls -->
+<button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev"
+        style="left: -60px; width: auto;">
+    <span class="carousel-control-prev-icon"></span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next"
+        style="right: -60px; width: auto;">
+    <span class="carousel-control-next-icon" style="color: #8e3c20"></span>
+</button>
         </div>
     </div>
+
+</section>
+<section class="py-5 bg-cream" style="min-height: 100vh; display: flex; align-items: center;">
+    <div class="container" style="margin-top: 80px">
+        <h2 class="text-center fw-bold mb-5 tone-brown">GALLERIES OF MENU</h2>
+
+        <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @foreach ($galleries->chunk(3) as $chunkIndex => $chunk)
+                    <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}">
+                        <div class="row g-4 justify-content-center">
+                            @foreach ($chunk as $gallery)
+                                <div class="col-md-4">
+                                    <div class="card shadow rounded-4 overflow-hidden h-100 border-0">
+                                        <div class="card-img-top d-flex align-items-end p-3"
+                                            style="height: 500px; 
+                                                background: url('{{ asset('storage/' . $gallery->image) }}') center center / cover no-repeat;
+                                                position: relative;">
+
+                                            <!-- Overlay gelap agar teks lebih jelas -->
+                                            <div class="w-100 text-center fw-bold text-white py-2"
+                                                style="background: rgba(0,0,0,0.5); border-radius: 0 0 12px 12px;">
+                                                {{ $gallery->description }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            <!-- Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+
 </section>
 
 <style>
 /* Color Tone */
-.bg-cream { background: linear-gradient(
+.bg-cream { background:linear-gradient(
         0deg,
-         rgba(0, 0, 0, 0.95),
-          rgb(197, 168, 4),
-         rgba(0, 0, 0, 0.95)) !important; }
-.tone-brown { color: #efefef !important; }
+        rgba(85, 67, 29, 0.815),
+        rgba(250, 237, 212, 0.87),
+        rgba(85, 67, 29, 0.815)) !important; }
+.tone-brown { color: #8e3c20 !important; }
 
 /* Container for the flip card */
 .gallery-card {
@@ -110,11 +172,27 @@
     transform: rotateY(180deg);
     padding: 1rem;
 }
-
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(33%) sepia(30%) saturate(500%) hue-rotate(350deg) brightness(90%) contrast(90%);
+}
 /* Flip effect */
 .gallery-card:hover .flipper {
     transform: rotateY(180deg);
 }
+.carousel-control-prev,
+.carousel-control-next {
+    width: auto;
+}
+
+.carousel-control-prev {
+    left: -60px;
+}
+
+.carousel-control-next {
+    right: -60px;
+}
+
 </style>
 
 {{-- Lazy Load Script --}}
