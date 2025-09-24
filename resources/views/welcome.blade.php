@@ -25,7 +25,7 @@
             Welcome to <span style="color:#8e3c20;">Crab n Co</span>
         </h1>
 
-        <a href="https://api.whatsapp.com/send/?phone=62811358998&text&type=phone_number&app_absent=0" 
+        <a href="https://api.whatsapp.com/send/?phone=6282140098833&text&type=phone_number&app_absent=0" 
            target="_blank"
            class="btn btn-lg shadow mt-4 animate__animated animate__fadeInUp"
            style="background: #8e3c20; color:#faedd4; border-radius: 30px; padding:0.75rem 2rem; font-weight:600; transition: all 0.3s;">
@@ -42,44 +42,49 @@
     <div class="container">
         <h2 class="text-center fw-bold mb-5" style="color: #8e3c20">OUR SIGNATURE MENU</h2>
 
-        <div id="favoriteMenuCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div id="favoriteMenuCarousel" 
+            class="carousel slide" 
+            data-bs-ride="carousel" 
+            data-bs-interval="3000"> <!-- 3 detik -->
             <div class="carousel-inner">
-
-                @foreach ($menus->chunk(3) as $chunkIndex => $menuChunk)
-                    <div class="carousel-item {{ $chunkIndex === 0 ? 'active' : '' }}">
-                        <div class="row row-cols-1 row-cols-md-3 g-4">
-                            @foreach ($menuChunk as $menu)
-                                <div class="col">
-                                    <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden" style="background:rgba(255,255,255,0.1); color:#efefef;">
-                                        <div class="position-relative overflow-hidden" style="height: 250px;">
-                                            <img src="{{ asset('storage/'.$menu->gambar) }}"
-                                                class="card-img-top w-100 h-100"
-                                                style="object-fit: cover;"
-                                                alt="{{ $menu->name }}">
-                                            <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-25"></div>
-                                        </div>
-                                        <div class="card-body text-center">
-                                            <h5 class=" fw-bold" style="color: #8e3c20">{{ $menu->nama }}</h5>
+                @foreach ($menus->where('favorite', 1) as $index => $menu)
+                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                        <div class="row g-4 flex-nowrap justify-content-center">
+                            <div class="col-md-4">
+                                <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden text-white">
+                                    <div class="position-relative d-flex flex-column justify-content-end"
+                                        style="
+                                            height: 650px; 
+                                            background-image: url('{{ asset('storage/'.$menu->gambar) }}');
+                                            background-size: cover;
+                                            background-position: center;
+                                        ">
+                                        <!-- Overlay -->
+                                        <div class="w-100 p-3" style="background: rgba(0,0,0,0.5);">
+                                            <h5 class="fw-bold text-center m-0" style="color: #f8f9fa;">
+                                                {{ $menu->nama }}
+                                            </h5>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            </div>
                         </div>
                     </div>
                 @endforeach
-
             </div>
 
             {{-- Navigasi --}}
             <button class="carousel-control-prev" type="button" data-bs-target="#favoriteMenuCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
-                <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#favoriteMenuCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon"></span>
-                <span class="visually-hidden">Next</span>
             </button>
         </div>
+
+
+
+
     </div>
 </section>
 <section id="about" class="py-5" style="background: linear-gradient(
@@ -124,7 +129,7 @@
                             <i class="bi bi-geo-alt-fill text-custom me-3 fs-4"></i>
                             <div>
                                 <span class="d-block fw-bold">Location</span>
-                                <span class="d-block fs-6">Jl. Sumatera No.35, Gubeng, Kec. Gubeng, Surabaya</span>
+                                <span class="d-block fs-6">Crab n Co Restaurant, Jl Bukit Golf D1-12 Citraland, Surabaya</span>
                             </div>
                         </div>
                     </li>
@@ -157,13 +162,28 @@
             {{-- Maps --}}
             <div class="col-lg-6" data-aos="fade-left">
                 <div class="ratio ratio-16x9 shadow-lg rounded-4 overflow-hidden">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.74994879306!2d112.75011730000001!3d-7.2692707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fbd9ce98e1fd%3A0x7d23e2e7537c2996!2sDomicile%20Kitchen%20And%20Lounge!5e0!3m2!1sid!2sid!4v1757948753589!5m2!1sid!2sid"                        
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.5953068674085!2d112.64451067588037!3d-7.286800371620103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fdda680f2979%3A0x9994aaf04ca801c1!2sCrab%20N%20Co%20Restaurant!5e0!3m2!1sid!2sid!4v1758735724456!5m2!1sid!2sid"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    let items = document.querySelectorAll('#favoriteMenuCarousel .carousel-item');
+
+    items.forEach((el) => {
+        let row = el.querySelector(".row"); // target row flex
+        let next = el.nextElementSibling ? el.nextElementSibling : items[0];
+        row.appendChild(next.querySelector(".col-md-4").cloneNode(true));
+
+        let next2 = next.nextElementSibling ? next.nextElementSibling : items[0];
+        row.appendChild(next2.querySelector(".col-md-4").cloneNode(true));
+    });
+});
+</script>
+
 @endsection
 
 <style>
@@ -256,4 +276,5 @@ p, .lead, span, li {
     color: #8e3c20;
 }
 </style>
+
 @endpush

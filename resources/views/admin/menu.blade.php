@@ -33,16 +33,10 @@
                             <textarea name="deskripsi" class="form-control" rows="3" placeholder="Deskripsi singkat menu..."></textarea>
                         </div>
 
-                        {{-- Harga --}}
-                        <div class="mb-3">
-                            <label class="form-label">Harga</label>
-                            <input type="number" name="harga" class="form-control" placeholder="25000" required>
-                        </div>
-
                         {{-- Favorite --}}
                         <div class="mb-3 form-check">
                             <input type="checkbox" name="favorite" class="form-check-input" id="favoriteCheck">
-                            <label class="form-check-label" for="favoriteCheck">Tandai sebagai Favorite</label>
+                            <label class="form-check-label" for="favoriteCheck">Signature</label>
                         </div>
 
                         {{-- Gambar --}}
@@ -75,8 +69,8 @@
 
             <select name="favorite" class="form-select" style="max-width: 150px;">
                 <option value="">Semua</option>
-                <option value="1" {{ $favorite === '1' ? 'selected' : '' }}>Favorite</option>
-                <option value="0" {{ $favorite === '0' ? 'selected' : '' }}>Bukan Favorite</option>
+                <option value="1" {{ $favorite === '1' ? 'selected' : '' }}>Signature</option>
+                <option value="0" {{ $favorite === '0' ? 'selected' : '' }}>Bukan Signature</option>
             </select>
 
             <button class="btn btn-outline-secondary" type="submit">
@@ -98,7 +92,7 @@
                          style="height:200px; object-fit:cover;">
                     @if($menu->favorite)
                         <span class="badge bg-danger position-absolute top-0 start-0 m-3 rounded-pill px-3 py-2">
-                            Favorite
+                            Signature
                         </span>
                     @endif
                 </div>
@@ -106,9 +100,6 @@
                     <h5 class="fw-bold text-dark">{{ $menu->nama }}</h5>
                     <p class="text-muted small flex-grow-1">{{ $menu->deskripsi }}</p>
                     <div class="d-flex justify-content-between align-items-center">
-                        <span class="fw-bold text-primary fs-5">
-                            Rp {{ number_format($menu->harga, 0, ',', '.') }}
-                        </span>
                         <div>
                             <!-- Tombol Edit -->
                             <button class="btn btn-sm btn-warning me-1" data-bs-toggle="modal" data-bs-target="#editMenuModal{{ $menu->id }}">
@@ -167,16 +158,12 @@
                             </div>
 
                             {{-- Harga --}}
-                            <div class="mb-3">
-                                <label class="form-label">Harga</label>
-                                <input type="number" name="harga" class="form-control" value="{{ $menu->harga }}" required>
-                            </div>
 
                             {{-- Favorite --}}
                             <div class="mb-3 form-check">
                                 <input type="checkbox" name="favorite" class="form-check-input" id="favoriteCheck{{ $menu->id }}"
                                     {{ $menu->favorite ? 'checked' : '' }}>
-                                <label class="form-check-label" for="favoriteCheck{{ $menu->id }}">Tandai sebagai Favorite</label>
+                                <label class="form-check-label" for="favoriteCheck{{ $menu->id }}">Tandai sebagai Signature</label>
                             </div>
                         </div>
 
@@ -196,9 +183,9 @@
 
 
     <!-- Pagination -->
-    <div class="mt-4">
-        {{ $menus->withQueryString()->links() }}
-    </div>
+<div class="mt-4">
+    {{ $menus->withQueryString()->links('vendor.pagination.bootstrap-5') }}
+</div>
 </div>
 <script>
 function confirmDelete(id) {

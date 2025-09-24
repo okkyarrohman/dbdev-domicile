@@ -27,6 +27,11 @@
                @if(Request::routeIs('admin.menu')) active @endif">
                 <i class="bi bi-journal"></i><span>Manajemen Menu</span>
             </a>
+            <a href="{{ route('admin.promo') }}" 
+               class="list-group-item list-group-item-action py-3 ripple rounded-3 mb-2 d-flex gap-3
+               @if(Request::routeIs('admin.promo')) active @endif">
+                <i class="bi-megaphone-fill"></i><span>Manajemen Promo</span>
+            </a>
 
             {{-- Galeri --}}
             <a href="{{ route('admin.galleries.index') }}" 

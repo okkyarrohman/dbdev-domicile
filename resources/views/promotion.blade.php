@@ -14,21 +14,16 @@
         rgba(250, 237, 212, 0.87),
         rgba(110, 86, 34, 0.55));">
     <div class="container text-center">
-        <!-- Title -->
-        <h2 class="fw-bold mb-5" style="color:#8e3c20;">OUR PROMOTION</h2>
-
         <!-- Sliding Promotion Banner -->
         <div id="promotionCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
             <div class="carousel-inner rounded-4 shadow-lg" style="height:400px; overflow:hidden;">
-                <div class="carousel-item active">
-                    <img src="{{ asset('assets/img/1.jpg') }}" class="d-block w-100 h-100 object-fit-cover" alt="Promo 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('assets/img/2.jpg') }}" class="d-block w-100 h-100 object-fit-cover" alt="Promo 2">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('assets/img/3.jpg') }}" class="d-block w-100 h-100 object-fit-cover" alt="Promo 3">
-                </div>
+                @foreach($banners as $index => $banner)
+                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                        <img src="{{ asset('storage/'.$banner->img) }}" 
+                            class="d-block w-100 h-100 object-fit-cover" 
+                            alt="Banner Promo">
+                    </div>
+                @endforeach
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#promotionCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
@@ -41,28 +36,23 @@
 
         <!-- Visuals of Benefit -->
         <div class="row g-4">
-            <div class="col-md-4">
-                <div class="p-4 rounded-4 shadow-sm h-100 bg-white">
-                    <i class="bi bi-gift-fill fs-1 text-custom mb-3"></i>
-                    <h5 class="fw-bold mb-2">Free Item</h5>
-                    <p class="mb-0 text-muted">Get exclusive free items with every purchase above Rp 200.000.</p>
+            @foreach($promotions as $promotion)
+                <div class="col-md-4">
+                    <div class="p-4 rounded-4 shadow-sm h-100 text-center" style="background:rgba(255,255,255,0.1);">
+                        @if($promotion->img)
+                           <img src="{{ asset('storage/'.$promotion->img) }}" 
+                            alt="Promotion" 
+                            class="mb-3" 
+                            style="width:300%; height:200px; object-fit:cover; border-radius:8px;">
+                        @else
+                            <i class="bi bi-star-fill fs-1 text-custom mb-3"></i>
+                        @endif
+                        <h5 class="mb-0" style="color: #8e3c20">{{ $promotion->keterangan }}</h5>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-4 rounded-4 shadow-sm h-100 bg-white">
-                    <i class="bi bi-ticket-perforated-fill fs-1 text-custom mb-3"></i>
-                    <h5 class="fw-bold mb-2">Voucher Discount</h5>
-                    <p class="mb-0 text-muted">Enjoy special vouchers up to 50% off on selected menus.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-4 rounded-4 shadow-sm h-100 bg-white">
-                    <i class="bi bi-cash-stack fs-1 text-custom mb-3"></i>
-                    <h5 class="fw-bold mb-2">Cashback Reward</h5>
-                    <p class="mb-0 text-muted">Earn cashback points for every dine-in and redeem on your next visit.</p>
-                </div>
-            </div>
+            @endforeach
         </div>
+
     </div>
 </section>
 @endsection

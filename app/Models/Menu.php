@@ -10,6 +10,7 @@ class Menu extends Model
         'nama',
         'deskripsi',
         'harga',
+        'category',
         'favorite',
         'gambar', // ini wajib ada
     ];

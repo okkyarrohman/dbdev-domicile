@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('menus', function (Blueprint $table) {
+        Schema::create('promotions', function (Blueprint $table) {
             $table->id();
-            $table->string('nama'); // Nama menu
-            $table->text('deskripsi')->nullable(); // Deskripsi menu
-            $table->boolean('favorite')->default(false); // Favorite: yes/no
-            $table->string('gambar')->nullable(); // Path gambar menu
+            $table->string('img'); // untuk path/URL gambar
+            $table->text('keterangan')->nullable(); // deskripsi atau keterangan promosi
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('menus');
+        Schema::dropIfExists('promotions');
     }
 };

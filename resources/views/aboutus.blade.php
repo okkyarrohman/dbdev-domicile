@@ -28,14 +28,14 @@
             </div>
             <div class="col-lg-6" data-aos="fade-left">
             <div class="p-4 rounded-4 shadow-lg h-100 text-center" style="background:rgba(255,255,255,0.1); color:#efefef">
-                <h2 class="fw-bold mb-3" style="color:#efefef;">Our Restaurant</h2>
-                <p class="fs-5" style="color: #efefef">
+                <h2 class="fw-bold mb-3" style="color:#8e3c20;">Our Restaurant</h2>
+                <p class="fs-5" style="color:#8e3c20">
                     Since <strong>2010</strong>, DOMICILE has become a favorite culinary destination,
                     serving <strong>authentic Indonesian dishes</strong> with a modern twist.
                     With a warm Javanese-inspired interior and friendly service,
                     we strive to create a dining atmosphere that is both comfortable and memorable.
                 </p>
-                <p class="fs-5" style="color: #efefef">
+                <p class="fs-5" style="color: #8e3c20">
                     We believe every dish tells a story, and every visit is an experience worth remembering.
                 </p>
             </div>
@@ -72,45 +72,34 @@
                 <div id="newsCarousel" class="carousel slide" data-bs-ride="false">
                     <div class="carousel-inner">
 
-                        @foreach ($news->chunk(3) as $chunkIndex => $chunk)
-                            <div class="carousel-item {{ $chunkIndex === 0 ? 'active' : '' }}">
-                                <div class="d-flex flex-column gap-3">
-
-                                    @foreach ($chunk as $item)
-                                        <div class="card shadow-sm border-0 rounded-4 hover-card">
-                                            <div class="row g-0 align-items-center">
-                                                <div class="col-md-4">
-                                                    <img src="{{ asset('assets/img/2.jpg') }}"
-                                                        class="img-fluid rounded-start"
-                                                        alt="{{ $item->title ?? 'News' }}"
-                                                        style="object-fit: cover; height:180px; width:100%;">
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="card-body text-start">
-                                                        <h5 class="fw-bold" style="color:#8e3c20;">{{ strtoupper($item->title ?? 'UNTITLED') }}</h5>
-                                                        <p class="text-muted">
-                                                            {{ \Illuminate\Support\Str::limit($item->excerpt ?? ($item->body ?? ''), 200) }}
-                                                        </p>
-                                                    </div>
+                        <div class="scroll-container" 
+                            style="max-height: 600px; overflow-y: auto; padding-right: 5px;">
+                            <div class="d-flex flex-column gap-3">
+                                @foreach ($news as $item)
+                                    <div class="card shadow-sm border-0 rounded-4 hover-card">
+                                        <div class="row g-0 align-items-center">
+                                            <div class="col-md-4">
+                                                <img src="{{ asset('assets/img/2.jpg') }}"
+                                                    class="img-fluid rounded-start"
+                                                    alt="{{ $item->title ?? 'News' }}"
+                                                    style="object-fit: cover; height:180px; width:100%;">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body text-start">
+                                                    <h5 class="fw-bold" style="color:#8e3c20;">
+                                                        {{ strtoupper($item->title ?? 'UNTITLED') }}
+                                                    </h5>
+                                                    <p class="text-muted">
+                                                        {{ \Illuminate\Support\Str::limit($item->excerpt ?? ($item->body ?? ''), 200) }}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
-                                    @endforeach
-
-                                </div>
+                                    </div>
+                                @endforeach
                             </div>
-                        @endforeach
+                        </div>
 
-                    </div>
-
-                    {{-- Tombol navigasi atas & bawah --}}
-                    <div class="d-flex justify-content-center mt-3 gap-3">
-                        <button class="btn btn-outline-dark rounded-circle" type="button" data-bs-target="#newsCarousel" data-bs-slide="prev">
-                            <i class="bi bi-arrow-up"></i>
-                        </button>
-                        <button class="btn btn-outline-dark rounded-circle" type="button" data-bs-target="#newsCarousel" data-bs-slide="next">
-                            <i class="bi bi-arrow-down"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -136,7 +125,7 @@
             </p>
             {{-- Instagram backlink --}}
             <div class="mt-5">
-                <a href="https://instagram.com/yourpage" target="_blank" class="btn btn-lg shadow"
+                <a href="https://www.instagram.com/crabnco?utm_source=ig_web_button_share_sheet&igsh=MWZpNHZvOXZtMzZkNA==" target="_blank" class="btn btn-lg shadow"
                 style="background:#8e3c20; color:#faedd4; border-radius: 30px; font-weight:600;">
                     <i class="bi bi-instagram me-2"></i> Our Page on Instagram
                 </a>

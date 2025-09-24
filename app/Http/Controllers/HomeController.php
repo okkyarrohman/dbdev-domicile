@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $menus = Menu::all(); // ambil semua menu
+        $menus = Menu::where('favorite', 1)->get();
         return view('welcome', compact('menus'));
     }
 }

@@ -10,6 +10,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MeetingNEventController;
 use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\Admin\PromoController;
 use App\Http\Controllers\Admin\ReportController as AdminReportController;
 use App\Http\Controllers\Admin\GalleryController as AdminGalleryController;
 use App\Http\Controllers\Admin\MenuController as AdminMenuController;
@@ -30,6 +31,13 @@ Route::post('/admin/logout', [SessionController::class, 'logout'])->name('admin.
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminHomeController::class, 'index'])->name('home');
     Route::get('/menu', [AdminMenuController::class, 'index'])->name('menu');
+    Route::get('/promotion', [PromoController::class, 'index'])->name('promo');
+    Route::post('/promotion/store', [PromoController::class, 'store'])->name('promo.store');
+    Route::put('/promotion/{id}', [PromoController::class, 'update'])->name('promo.update');
+    Route::delete('/promotion/{id}', [PromoController::class, 'destroy'])->name('promo.destroy');
+    Route::post('/benner-promotion/store', [PromoController::class, 'bennerStore'])->name('banner.store');
+    Route::put('/benner-promotion/{id}', [PromoController::class, 'BennerUpdate'])->name('banner.update');
+    Route::delete('/benner-promotion/{id}', [PromoController::class, 'bennerDestroy'])->name('banner.destroy');
     Route::get('/report', [AdminReportController::class, 'index'])->name('report');
     Route::post('/menu/store', [AdminMenuController::class, 'store'])->name('menu.store');
     Route::put('/menu/{id}', [AdminMenuController::class, 'update'])->name('menu.update');

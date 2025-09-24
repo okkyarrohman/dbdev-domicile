@@ -3,7 +3,8 @@
 @section('content')
 <section class="d-flex align-items-center justify-content-center vh-100 bg-light">
     <div class="card shadow-lg p-4 rounded-4" style="max-width:400px; width:100%;">
-        <h3 class="text-center mb-4 fw-bold" style="color:#634c4c;">Admin Login</h3>
+        <h3 class="text-center mb-4 fw-bold" style="color:#634c4c;">Login</h3>
+        <h3 class="text-center mb-4 fw-bold" style="color:#634c4c;">Crab & Co.</h3>
 
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
@@ -15,7 +16,7 @@
         <form method="POST" action="{{ route('admin.login') }}">
             @csrf
             <div class="mb-3">
-                <label for="email" class="form-label">Email Admin</label>
+                <label for="email" class="form-label">Email</label>
                 <input type="email" name="email" id="email" class="form-control rounded-3" 
                        placeholder="admin@domain.com" required autofocus value="{{ old('email') }}">
             </div>

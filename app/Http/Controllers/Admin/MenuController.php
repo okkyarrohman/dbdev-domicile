@@ -24,7 +24,7 @@ public function index(Request $request)
                 $query->where('favorite', $favorite); // filter favorit (0/1)
             })
             ->orderBy('created_at', 'desc')
-            ->paginate(9);
+            ->paginate(6);
 
     return view('admin.menu', compact('menus', 'search', 'favorite'));
 }
@@ -33,7 +33,6 @@ public function index(Request $request)
         $request->validate([
             'nama' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
-            'harga' => 'required|numeric|min:0',
             'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
@@ -52,7 +51,6 @@ public function index(Request $request)
 
         $menu->nama = $request->nama;
         $menu->deskripsi = $request->deskripsi;
-        $menu->harga = $request->harga;
         $menu->favorite = $request->has('favorite');
         $menu->save();
 
@@ -78,7 +76,6 @@ public function index(Request $request)
         $request->validate([
             'nama' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
-            'harga' => 'required|numeric|min:0',
             'gambar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048', // validasi gambar
         ]);
 
@@ -92,7 +89,6 @@ public function index(Request $request)
         Menu::create([
             'nama'      => $request->nama,
             'deskripsi' => $request->deskripsi,
-            'harga'     => $request->harga,
             'favorite'  => $request->has('favorite'),
             'gambar'    => $gambarPath, // simpan path gambar ke database
         ]);

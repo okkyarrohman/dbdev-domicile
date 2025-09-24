@@ -14,7 +14,8 @@
     <div class="container" style="margin-top: 80px">
         <h2 class="text-center fw-bold mb-5 tone-brown">GALLERIES OF AMBIENCE</h2>
 
-        <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div id="galleryCarousel"  data-bs-ride="carousel" 
+            data-bs-interval="3000" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 @foreach ($galleries->chunk(3) as $chunkIndex => $chunk)
                     <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}">
@@ -23,15 +24,9 @@
                                 <div class="col-md-4">
                                     <div class="card shadow rounded-4 overflow-hidden h-100 border-0">
                                         <div class="card-img-top d-flex align-items-end p-3"
-                                            style="height: 500px; 
+                                            style="height: 600px; 
                                                 background: url('{{ asset('storage/' . $gallery->image) }}') center center / cover no-repeat;
                                                 position: relative;">
-
-                                            <!-- Overlay gelap agar teks lebih jelas -->
-                                            <div class="w-100 text-center fw-bold text-white py-2"
-                                                style="background: rgba(0,0,0,0.5); border-radius: 0 0 12px 12px;">
-                                                {{ $gallery->description }}
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -59,46 +54,63 @@
     <div class="container" style="margin-top: 80px">
         <h2 class="text-center fw-bold mb-5 tone-brown">GALLERIES OF MENU</h2>
 
-        <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div id="favoriteMenuCarousel" 
+            class="carousel slide" 
+            data-bs-ride="carousel" 
+            data-bs-interval="3000"> <!-- 3 detik -->
             <div class="carousel-inner">
-                @foreach ($galleries->chunk(3) as $chunkIndex => $chunk)
-                    <div class="carousel-item {{ $chunkIndex == 0 ? 'active' : '' }}">
-                        <div class="row g-4 justify-content-center">
-                            @foreach ($chunk as $gallery)
-                                <div class="col-md-4">
-                                    <div class="card shadow rounded-4 overflow-hidden h-100 border-0">
-                                        <div class="card-img-top d-flex align-items-end p-3"
-                                            style="height: 500px; 
-                                                background: url('{{ asset('storage/' . $gallery->image) }}') center center / cover no-repeat;
-                                                position: relative;">
-
-                                            <!-- Overlay gelap agar teks lebih jelas -->
-                                            <div class="w-100 text-center fw-bold text-white py-2"
-                                                style="background: rgba(0,0,0,0.5); border-radius: 0 0 12px 12px;">
-                                                {{ $gallery->description }}
-                                            </div>
+                @foreach ($menus->where('favorite', 1) as $index => $menu)
+                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                        <div class="row g-4 flex-nowrap justify-content-center">
+                            <div class="col-md-4">
+                                <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden text-white">
+                                    <div class="position-relative d-flex flex-column justify-content-end"
+                                        style="
+                                            height: 650px; 
+                                            background-image: url('{{ asset('storage/'.$menu->gambar) }}');
+                                            background-size: cover;
+                                            background-position: center;
+                                        ">
+                                        <!-- Overlay -->
+                                        <div class="w-100 p-3" style="background: rgba(0,0,0,0.5);">
+                                            <h5 class="fw-bold text-center m-0" style="color: #f8f9fa;">
+                                                {{ $menu->nama }}
+                                            </h5>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-
+                            </div>
                         </div>
                     </div>
                 @endforeach
             </div>
 
-            <!-- Controls -->
-            <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev">
+            {{-- Navigasi --}}
+            <button class="carousel-control-prev" type="button" data-bs-target="#favoriteMenuCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#favoriteMenuCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </button>
         </div>
+
     </div>
 
 </section>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    let items = document.querySelectorAll('#favoriteMenuCarousel .carousel-item');
 
+    items.forEach((el) => {
+        let row = el.querySelector(".row"); // target row flex
+        let next = el.nextElementSibling ? el.nextElementSibling : items[0];
+        row.appendChild(next.querySelector(".col-md-4").cloneNode(true));
+
+        let next2 = next.nextElementSibling ? next.nextElementSibling : items[0];
+        row.appendChild(next2.querySelector(".col-md-4").cloneNode(true));
+    });
+});
+</script>
 <style>
 /* Color Tone */
 .bg-cream { background:linear-gradient(
